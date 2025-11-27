@@ -20,7 +20,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests by tag
-      run: npx playwright test --grep "${{ github.event.inputs.tag }}"
+      run: npx cucumber-js --tags="${{ github.event.inputs.tag }}"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
