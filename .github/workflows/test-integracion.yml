@@ -1,9 +1,10 @@
 name: FrontEnd Test - Integracion
 on:
-  worlkflow_dispatch:
-   inputs:
+  workflow_dispatch:
+    inputs:
       tag:
         description: Ingrese el nombre del tag del escenario
+        required: true
         type: string
 jobs:
   test:
@@ -18,8 +19,8 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
+    - name: Run Playwright tests by tag
+      run: npx playwright test --grep "${{ github.event.inputs.tag }}"
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
