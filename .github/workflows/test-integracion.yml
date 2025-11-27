@@ -1,9 +1,10 @@
-name: Playwright Tests
+name: FrontEnd Test - Integracion
 on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+  worlkflow_dispatch:
+   inputs:
+      tag:
+        description: Ingrese el nombre del tag del escenario
+        type: string
 jobs:
   test:
     timeout-minutes: 60

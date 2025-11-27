@@ -15,6 +15,61 @@ export class LoginPage {
         await this.page.goto(url);
     }
 
+    async fillUsername(username: string) {
+        await this.loginLocator.inputUsername.fill(username);
+    }
+
+    async fillPassword(password: string) {
+        await this.loginLocator.inputPassword.fill(password);
+    }
+
+    async clickLoginButton() {
+        await this.loginLocator.btnLogin.click();
+    }
+
+    async fillCredentials(role: string) {
+        let username = '';
+        let password = '';
+        switch (role) {
+            case 'DIRECTIVO':
+                username = process.env.DIRECTIVO_USERNAME || '';
+                password = process.env.DIRECTIVO_PASSWORD || '';
+                break;
+            case 'PROFESOR_PRIMARIA':
+                username = process.env.PROFESOR_PRIMARIA_USERNAME || '';
+                password = process.env.PROFESOR_PRIMARIA_PASSWORD || '';
+                break;
+            case 'PROFESOR_SECUNDARIA':
+                username = process.env.PROFESOR_SECUNDARIA_USERNAME || '';
+                password = process.env.PROFESOR_SECUNDARIA_PASSWORD || '';
+                break;
+            case 'AUXILIAR':
+                username = process.env.AUXILIAR_USERNAME || '';
+                password = process.env.AUXILIAR_PASSWORD || '';
+                break;
+            case 'RESPONSABLE':
+                username = process.env.RESPONSABLE_USERNAME || '';
+                password = process.env.RESPONSABLE_PASSWORD || '';
+                break;
+            case 'OTRO':
+                username = process.env.OTRO_USERNAME || '';
+                password = process.env.OTRO_PASSWORD || '';
+                break;
+            default:
+                console.log('Rol no reconocido');
+                return;
+        }
+        await this.fillUsername(username);
+        await this.fillPassword(password);
+        await this.clickLoginButton();
+        console.log(`Ingreso usuario: ${username} y contraseña: ${password}`);
+    }
+
+    async validateImgLogoIsVisible() {
+        await this.page.waitForTimeout(2000);
+        expect(await this.loginLocator.imgSchoolLogin).toBeVisible(); 
+    }
+
     async clickRoleOption(optionRole: string) {
         switch (optionRole) {
             case 'DIRECTIVO':
@@ -28,10 +83,6 @@ export class LoginPage {
             case 'PROFESOR_SECUNDARIA':
                 await this.loginLocator.optionSecondarySchoolTutorTeacher.click();
                 console.log("Seleccionado Profesor Secundaria");
-                break;
-            case 'AUXILIAR':
-                await this.loginLocator.optionAssistant.click();
-                console.log("Seleccionado Auxiliar");
                 break;
             case 'AUXILIAR':
                 await this.loginLocator.optionAssistant.click();
@@ -52,4 +103,8 @@ export class LoginPage {
         }
     }
 
+    async validateLoginSuccess() {
+        await this.page.waitForTimeout(2000);
+        expect(await this.loginLocator.messageWelcomeLogin).toBeVisible(); 
+    }
 };

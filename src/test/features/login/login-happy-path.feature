@@ -20,4 +20,4 @@ Scenario Outline: Validar que se puede realizar un inicio de sesion exitoso con 
         | PROFESOR_SECUNDARIA     |
         | AUXILIAR                |
         | TUTOR                   |
-        | PERSONAL_ADMINISTRATIVO |
+        | OTRO                    |
