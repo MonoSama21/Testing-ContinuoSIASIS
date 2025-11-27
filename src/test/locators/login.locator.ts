@@ -32,4 +32,20 @@ export class LoginLocator {
         return this.page.getByText('Otro');
     }
 
+    get inputUsername(){
+        return this.page.locator('//input[@name="Nombre_Usuario"]');
+    }
+
+    get inputPassword(){
+        return this.page.locator('//input[@name="Contraseña"]');
+    }
+
+    get btnLogin(){
+        return this.page.getByRole('button', { name: 'Ingresar' });
+    }
+
+    get imgSchoolLogin(){
+        return this.page.locator('//img[@alt="Colegio Asuncion 8 Logo"]');
+    }
+
 }

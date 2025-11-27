@@ -15,6 +15,30 @@ export class LoginPage {
         await this.page.goto(url);
     }
 
+    async fillUsername(username: string) {
+        await this.loginLocator.inputUsername.fill(username);
+    }
+
+    async fillPassword(password: string) {
+        await this.loginLocator.inputPassword.fill(password);
+    }
+
+    async clickLoginButton() {
+        await this.loginLocator.btnLogin.click();
+    }
+
+    async fillCredentials(username: string, password: string) {
+
+
+        await this.fillUsername(username);
+        await this.fillPassword(password);
+        await this.clickLoginButton();
+    }
+
+    async validateImgLogoIsVisible() {
+        expect(await this.loginLocator.imgSchoolLogin).toBeVisible(); 
+    }
+
     async clickRoleOption(optionRole: string) {
         switch (optionRole) {
             case 'DIRECTIVO':
