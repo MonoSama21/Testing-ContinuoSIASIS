@@ -48,4 +48,8 @@ export class LoginLocator {
         return this.page.locator('//img[@alt="Colegio Asuncion 8 Logo"]');
     }
 
+    get messageWelcomeLogin(){
+        return this.page.locator("//h1[text()='¡Hola!']");
+    }
+
 }

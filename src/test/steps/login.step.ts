@@ -30,47 +30,12 @@ When('selecciono el rol {string}', async function (role) {
 });
 
 
-
-
 When('ingreso mi nombre de usuario y contraseña validos', async function () {
     await loginPage.validateImgLogoIsVisible();
-    let username = '';
-    let password = '';
-    switch (selectedRole) {
-        case 'DIRECTIVO':
-            username = process.env.DIRECTIVO_USERNAME || '';
-            password = process.env.DIRECTIVO_PASSWORD || '';
-            break;
-        case 'PROFESOR_PRIMARIA':
-            username = process.env.PROFESOR_PRIMARIA_USERNAME || '';
-            password = process.env.PROFESOR_PRIMARIA_PASSWORD || '';
-            break;
-        case 'PROFESOR_SECUNDARIA':
-            username = process.env.PROFESOR_SECUNDARIA_USERNAME || '';
-            password = process.env.PROFESOR_SECUNDARIA_PASSWORD || '';
-            break;
-        case 'AUXILIAR':
-            username = process.env.AUXILIAR_USERNAME || '';
-            password = process.env.AUXILIAR_PASSWORD || '';
-            break;
-        case 'RESPONSABLE':
-            username = process.env.RESPONSABLE_USERNAME || '';
-            password = process.env.RESPONSABLE_PASSWORD || '';
-            break;
-        case 'OTRO':
-            username = process.env.OTRO_USERNAME || '';
-            password = process.env.OTRO_PASSWORD || '';
-            break;
-        default:
-            console.log('Rol no reconocido');
-            return;
-    }
-
-    await loginPage.fillCredentials(username, password);
-
+    await loginPage.fillCredentials(selectedRole);
 });
 
 
 Then('accedo al sistema como {string}', async function (string) {
-    console.log("Accedio al sistema");
+    await loginPage.validateLoginSuccess();
 });
