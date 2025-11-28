@@ -8,7 +8,6 @@ export class DashboardLocator {
         this.page = page;
     }
 
-    
     get optionsDashboard(){
         return this.page.locator('#sidebar');
     }
