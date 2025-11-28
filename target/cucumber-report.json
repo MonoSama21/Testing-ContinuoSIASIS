@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario del sistema SIASIS\n    Quiero poder iniciar sesión con diferentes roles\n    Para acceder a las funcionalidades correspondientes a mi rol",
+    "description": "    Como usuario con rol de Directivo\n    Quiero poder consultar todos los axuliares disponibles\n    Para poder visualizar sus datos",
     "elements": [
       {
         "description": "",
-        "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis;validar-que-se-puede-realizar-un-inicio-de-sesion-exitoso-con-el-rol-directivo",
-        "keyword": "Scenario Outline",
-        "line": 18,
-        "name": "Validar que se puede realizar un inicio de sesion exitoso con el rol DIRECTIVO",
+        "id": "consulta-de-auxiliares-por-el-rol-directivo;validar-que-el-rol-directivo-puede-consultar-los-auxiliares",
+        "keyword": "Scenario",
+        "line": 14,
+        "name": "Validar que el rol DIRECTIVO puede consultar los auxiliares",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 232833800
+              "duration": 538147899
             }
           },
           {
@@ -27,134 +27,59 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1113043899
+              "duration": 1367064599
             }
           },
           {
             "arguments": [],
-            "keyword": "When ",
-            "line": 12,
+            "keyword": "And ",
+            "line": 9,
             "name": "selecciono el rol \"DIRECTIVO\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 99224400
+              "duration": 245511300
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 13,
+            "line": 10,
             "name": "ingreso mi nombre de usuario y contraseña validos",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 2175098199
+              "duration": 2311952799
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
+            "keyword": "And ",
+            "line": 11,
             "name": "accedo al sistema como \"DIRECTIVO\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 18184299
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 83418300
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login-happy-path",
-            "line": 1
-          },
-          {
-            "name": "@Escenario01",
-            "line": 10
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis;validar-que-se-puede-realizar-un-inicio-de-sesion-exitoso-con-el-rol-profesor_primaria",
-        "keyword": "Scenario Outline",
-        "line": 19,
-        "name": "Validar que se puede realizar un inicio de sesion exitoso con el rol PROFESOR_PRIMARIA",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 222956099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 8,
-            "name": "estoy en la pagina de login",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1105850599
+              "duration": 42728600
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 12,
-            "name": "selecciono el rol \"PROFESOR_PRIMARIA\"",
+            "line": 15,
+            "name": "hago click en el apartado de \"Auxiliares\"",
             "match": {
-              "location": "src\\test\\steps\\login.step.ts:16"
+              "location": "src\\test\\steps\\dashboard.step.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 74028299
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "ingreso mi nombre de usuario y contraseña validos",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2171354100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "accedo al sistema como \"PROFESOR_PRIMARIA\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 27468500
+              "duration": 9460605500
             }
           },
           {
@@ -162,385 +87,24 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 68012899
+              "duration": 4576731199
             }
           }
         ],
         "tags": [
           {
-            "name": "@login-happy-path",
-            "line": 1
-          },
-          {
-            "name": "@Escenario01",
-            "line": 10
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis;validar-que-se-puede-realizar-un-inicio-de-sesion-exitoso-con-el-rol-profesor_secundaria",
-        "keyword": "Scenario Outline",
-        "line": 20,
-        "name": "Validar que se puede realizar un inicio de sesion exitoso con el rol PROFESOR_SECUNDARIA",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 190360500
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 8,
-            "name": "estoy en la pagina de login",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1090722600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "selecciono el rol \"PROFESOR_SECUNDARIA\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 103092699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "ingreso mi nombre de usuario y contraseña validos",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2184021699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "accedo al sistema como \"PROFESOR_SECUNDARIA\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 12145999
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 87637700
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login-happy-path",
-            "line": 1
-          },
-          {
-            "name": "@Escenario01",
-            "line": 10
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis;validar-que-se-puede-realizar-un-inicio-de-sesion-exitoso-con-el-rol-auxiliar",
-        "keyword": "Scenario Outline",
-        "line": 21,
-        "name": "Validar que se puede realizar un inicio de sesion exitoso con el rol AUXILIAR",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 218004799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 8,
-            "name": "estoy en la pagina de login",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1099631699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "selecciono el rol \"AUXILIAR\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 78703799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "ingreso mi nombre de usuario y contraseña validos",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2162218699
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "accedo al sistema como \"AUXILIAR\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 8696299
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 73325300
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login-happy-path",
-            "line": 1
-          },
-          {
-            "name": "@Escenario01",
-            "line": 10
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis;validar-que-se-puede-realizar-un-inicio-de-sesion-exitoso-con-el-rol-tutor",
-        "keyword": "Scenario Outline",
-        "line": 22,
-        "name": "Validar que se puede realizar un inicio de sesion exitoso con el rol TUTOR",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 191154399
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 8,
-            "name": "estoy en la pagina de login",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1090864499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "selecciono el rol \"TUTOR\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 87282999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "ingreso mi nombre de usuario y contraseña validos",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2190930599
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "accedo al sistema como \"TUTOR\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 13236099
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 71267800
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login-happy-path",
-            "line": 1
-          },
-          {
-            "name": "@Escenario01",
-            "line": 10
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis;validar-que-se-puede-realizar-un-inicio-de-sesion-exitoso-con-el-rol-otro",
-        "keyword": "Scenario Outline",
-        "line": 23,
-        "name": "Validar que se puede realizar un inicio de sesion exitoso con el rol OTRO",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 262601900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 8,
-            "name": "estoy en la pagina de login",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:12"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 1076400999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 12,
-            "name": "selecciono el rol \"OTRO\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:16"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 85665100
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 13,
-            "name": "ingreso mi nombre de usuario y contraseña validos",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:22"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 2137649000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 14,
-            "name": "accedo al sistema como \"OTRO\"",
-            "match": {
-              "location": "src\\test\\steps\\login.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 10108399
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "passed",
-              "duration": 39569900
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login-happy-path",
-            "line": 1
-          },
-          {
-            "name": "@Escenario01",
-            "line": 10
+            "name": "@Escenario03",
+            "line": 13
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "inicio-de-sesión-exitoso-en-el-sistema-siasis",
+    "id": "consulta-de-auxiliares-por-el-rol-directivo",
     "line": 2,
     "keyword": "Feature",
-    "name": "Inicio de sesión exitoso en el sistema SIASIS",
-    "tags": [
-      {
-        "name": "@login-happy-path",
-        "line": 1
-      }
-    ],
-    "uri": "src\\resources\\features\\login\\login-happy-path.feature"
+    "name": "Consulta de Auxiliares por el rol DIRECTIVO",
+    "tags": [],
+    "uri": "src\\resources\\features\\rol-directivo\\consulta-auxiliares.feature"
   }
 ]

@@ -9,7 +9,7 @@ setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: true, // IMPORTANTE para GitHub Actions
+    headless: false, // IMPORTANTE para GitHub Actions
   });
 });
 
@@ -19,8 +19,8 @@ Before(async function () {
   pageFixture.page = page;
 
   await page.setViewportSize({
-    width: 1500,
-    height: 700,
+    width: 1600,
+    height: 800,
   });
 });
 
