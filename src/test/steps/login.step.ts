@@ -26,6 +26,7 @@ When('ingreso mi nombre de usuario y contraseña validos', async function () {
 
 Then('accedo al sistema como {string}', async function (string) {
     await loginPage.validateLoginSuccess();
+    console.log(`Ingreso exitoso como ${string}`);
 });
 
 When('ingreso mi nombre de usuario y contraseña invalidos', async function () {

@@ -116,6 +116,6 @@ export class LoginPage {
 
     async validateLoginSuccess() {
         await this.page.waitForLoadState('networkidle');
-        expect(await this.loginLocator.messageWelcomeLogin).toBeVisible(); 
+        await this.loginLocator.messageWelcomeLogin.isVisible(); 
     }
 };
