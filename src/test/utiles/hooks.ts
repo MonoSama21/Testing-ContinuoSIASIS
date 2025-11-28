@@ -10,7 +10,7 @@ setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: true, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
+    headless: false, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
     channel: 'msedge' //SE ESPECIFICA EL NAVEGADOR 
   });
 });
@@ -26,9 +26,8 @@ Before(async function () {
 });
 
 After(async function ({pickle}) {
-    //const img = await pageFixture.page.screenshot({path: `screenshots/${pickle.name}.png`});
-    //await this.attach(img, 'image/png');
-    console.log(`Finalizando el escenario: ${pickle.name}`);
-    await browser.close();
+    // Si quieres solo cerrar sesión o limpiar:
+    await pageFixture.page.waitForTimeout(8000);
+    await pageFixture.page.close();
 });
 

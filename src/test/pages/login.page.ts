@@ -115,7 +115,7 @@ export class LoginPage {
     }
 
     async validateLoginSuccess() {
-        await this.page.waitForTimeout(2000);
+        await this.page.waitForLoadState('networkidle');
         expect(await this.loginLocator.messageWelcomeLogin).toBeVisible(); 
     }
 };

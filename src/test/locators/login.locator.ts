@@ -49,10 +49,10 @@ export class LoginLocator {
     }
 
     get messageWelcomeLogin(){
-        return this.page.locator("//h1[text()='¡Hola!']");
+        return this.page.locator("#header");
     }
 
     get modalInvalidCredentials(){
-        return this.page.locator('//div[@role="alert"]');
+        return this.page.locator('//h1[contains(text(), "¡Hola!")]');
     }
 }
