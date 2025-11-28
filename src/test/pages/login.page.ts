@@ -65,6 +65,17 @@ export class LoginPage {
         console.log(`Ingreso usuario: ${username} y contraseña: ${password}`);
     }
 
+    async fillCredentialsInvalidate() {
+        await this.fillUsername("Invalido");
+        await this.fillPassword("Invalido");
+        await this.clickLoginButton();
+    }
+
+    async validateModalInvalidCredentialsIsVisible() {
+        await this.page.waitForTimeout(2000);
+        expect(await this.loginLocator.modalInvalidCredentials).toBeVisible();
+    }
+
     async validateImgLogoIsVisible() {
         await this.page.waitForTimeout(2000);
         expect(await this.loginLocator.imgSchoolLogin).toBeVisible(); 

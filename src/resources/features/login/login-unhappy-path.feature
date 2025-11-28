@@ -10,8 +10,8 @@ Background:
 @Escenario02
 Scenario Outline: Validar que no se puede realizar un inicio de sesion exitoso con credenciales invalidas y <rol>
     When selecciono el rol "<rol>"
-    And ingreso mi nombre de usuario y contraseña validos
-    Then accedo al sistema como "<rol>"
+    And ingreso mi nombre de usuario y contraseña invalidos
+    Then aparece un modal indicando que las credenciales son incorrectas
 
     Examples:
         | rol                     |

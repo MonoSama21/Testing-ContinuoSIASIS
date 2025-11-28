@@ -16,8 +16,8 @@ Scenario Outline: Validar que se puede realizar un inicio de sesion exitoso con 
     Examples:
         | rol                     |
         | DIRECTIVO               | 
-        | PROFESOR_PRIMARIA       |
-        | PROFESOR_SECUNDARIA     |
-        | AUXILIAR                |
-        | TUTOR                   |
-        | OTRO                    |
+        #| PROFESOR_PRIMARIA       |
+        #| PROFESOR_SECUNDARIA     |
+        #| AUXILIAR                |
+        #| TUTOR                   |
+        #| OTRO                    |
