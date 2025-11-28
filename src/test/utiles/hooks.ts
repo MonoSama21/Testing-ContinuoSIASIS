@@ -1,29 +1,42 @@
-import { Browser, BrowserContext, chromium, Page } from "@playwright/test";
+import { Browser, BrowserContext, chromium } from "@playwright/test";
 import { Before, After, BeforeAll, AfterAll, setDefaultTimeout } from '@cucumber/cucumber';
 import { pageFixture } from "./pageFixture";
 
 let browser: Browser;
 let context: BrowserContext;
 
-// Set the default timeout for all hooks and steps to 30 seconds.
 setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: true, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
+    headless: true, // IMPORTANTE para GitHub Actions
   });
 });
 
 Before(async function () {
-    context = await browser.newContext();
-    const page = await context.newPage();
-    pageFixture.page = page; 
-    await page.setViewportSize({
-        width: 1500, //ANCHO DE LA PÁGINA
-        height: 700, //LARGO LA PÁGINA 
-    }); 
+  context = await browser.newContext();
+  const page = await context.newPage();
+  pageFixture.page = page;
+
+  await page.setViewportSize({
+    width: 1500,
+    height: 700,
+  });
 });
 
-After(async function ({pickle}) {
+// CIERRA TODO EL ESCENARIO (PÁGINA + CONTEXT)
+After(async function () {
+  if (pageFixture.page) {
     await pageFixture.page.close();
-})
+  }
+  if (context) {
+    await context.close();
+  }
+});
+
+// CIERRA EL BROWSER AL FINAL
+AfterAll(async function () {
+  if (browser) {
+    await browser.close();
+  }
+});
