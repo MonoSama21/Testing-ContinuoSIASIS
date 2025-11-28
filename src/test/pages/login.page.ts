@@ -51,6 +51,10 @@ export class LoginPage {
                 username = process.env.RESPONSABLE_USERNAME || '';
                 password = process.env.RESPONSABLE_PASSWORD || '';
                 break;
+            case 'TUTOR':
+                username = process.env.TUTOR_USERNAME || '';
+                password = process.env.TUTOR_PASSWORD || '';
+                break;
             case 'OTRO':
                 username = process.env.OTRO_USERNAME || '';
                 password = process.env.OTRO_PASSWORD || '';
@@ -95,6 +99,10 @@ export class LoginPage {
                 await this.loginLocator.optionSecondarySchoolTutorTeacher.click();
                 console.log("Seleccionado Profesor Secundaria");
                 break;
+            case 'TUTOR':
+                await this.loginLocator.optionSecondarySchoolTutorTeacher.click();
+                console.log("Seleccionado Tutor");
+                break;
             case 'AUXILIAR':
                 await this.loginLocator.optionAssistant.click();
                 console.log("Seleccionado Auxiliar");
@@ -107,6 +115,7 @@ export class LoginPage {
                 await this.loginLocator.optionOther.click();
                 console.log("Seleccionado Otro");
                 break;
+
             default:
                 console.log("Opción no válida");
                 break;
