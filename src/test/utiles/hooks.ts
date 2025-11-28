@@ -10,7 +10,7 @@ setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: false, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
+    headless: true, //TRUE: EJECUTA LOS TEST CON EL NAVEGADOR  FALSE: EJECUTA LOS TEST SIN EL NAVEGADOR 
     channel: 'msedge' //SE ESPECIFICA EL NAVEGADOR 
   });
 });
