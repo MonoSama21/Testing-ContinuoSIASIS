@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 538147899
+              "duration": 158004500
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1367064599
+              "duration": 1053813799
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 245511300
+              "duration": 58545599
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2311952799
+              "duration": 2071721399
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 42728600
+              "duration": 7800900
             }
           },
           {
@@ -79,7 +79,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 9460605500
+              "duration": 2923930600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 16,
+            "name": "se muestra en pantalla la lista de auxiliares disponibles",
+            "match": {
+              "location": "src\\test\\steps\\dashboard.step.ts:20"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1354529299
             }
           },
           {
@@ -87,7 +100,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 4576731199
+              "duration": 35602200
             }
           }
         ],

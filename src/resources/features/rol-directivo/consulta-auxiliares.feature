@@ -13,7 +13,7 @@ Background:
 @Escenario03
 Scenario: Validar que el rol DIRECTIVO puede consultar los auxiliares
     When hago click en el apartado de "Auxiliares"
-    #Then se muestra en pantalla la lista de auxiliares disponibles
+    Then se muestra en pantalla la lista de auxiliares disponibles
     #And se muestra los nombres y apellidos del auxiliar
     #And se muestra el numero de contacto del axuliar
     #And se muestra el estado del auxiliar (activo/inactivo)
