@@ -11,7 +11,7 @@ Background:
 Scenario Outline: Validar que se puede realizar un inicio de sesion exitoso con el rol <rol>
     When selecciono el rol "<rol>"
     And ingreso mi nombre de usuario y contraseña validos
-    Then accedo al sistema como "<rol>"
+    Then accedo al sistema como "<rol>" 
 
     Examples:
         | rol                     |

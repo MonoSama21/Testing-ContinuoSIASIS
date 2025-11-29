@@ -1,4 +1,5 @@
 name: FrontEnd Test - Integracion
+
 on:
   workflow_dispatch:
     inputs:
@@ -10,19 +11,23 @@ on:
         description: Ingrese el correo donde llegará la notificación
         required: true
         type: string
+
 jobs:
   Pruebas-FrontEnd-Integracion:
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v4
 
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
-      
-# Enviar correo ANTES de ejecutar las pruebas
+
+    # ---------------------------------------------------------
+    # CORREO HTML INICIO DE PRUEBAS
+    # ---------------------------------------------------------
     - name: Notificar inicio de ejecución
       uses: dawidd6/action-send-mail@v3
       with:
@@ -33,10 +38,14 @@ jobs:
         subject: "🔵 Pruebas iniciadas - FrontEnd Integración"
         to: ${{ github.event.inputs.correo }}
         from: ${{ secrets.MAIL_FROM }}
-        body: |
-          Hola,
-          Las pruebas de integración han comenzado.
-          Tag ejecutado: ${{ github.event.inputs.tag }}
+        html_body: |
+          <div style="font-family: Arial; padding: 20px;">
+            <h2 style="color:#007bff;">🔵 Ejecución iniciada</h2>
+            <p>Las pruebas de integración han comenzado.</p>
+            <p><strong>Tag ejecutado:</strong> <span style="color:#007bff;">${{ github.event.inputs.tag }}</span></p>
+            <br>
+            <p>📌 <i>Te avisaremos nuevamente cuando las pruebas finalicen.</i></p>
+          </div>
 
     - name: Install dependencies
       run: npm ci
@@ -44,26 +53,41 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
 
+    # Ejecutar pruebas
     - name: Run Playwright tests by tag
-      run: npm test -- --tags="${{ github.event.inputs.tag }}"
+      id: run_tests
+      run: |
+        npm test -- --tags="${{ github.event.inputs.tag }}"
+        echo "resultado=$?" >> $GITHUB_OUTPUT
       continue-on-error: true
 
+    # Generar reporte
     - name: Generate report
       run: npm run report
 
     - name: List target directory
       run: ls -R target
 
+    # Subir artefacto
     - uses: actions/upload-artifact@v4
       if: always()
       with:
         name: cucumber-report
         path: target/
         retention-days: 30
-        
- # Enviar correo FINAL con reporte adjunto
+
+    # ---------------------------------------------------------
+    # COMPRIMIR REPORTE PARA ENVIARLO POR CORREO
+    # ---------------------------------------------------------
+    - name: Comprimir reporte
+      if: always()
+      run: zip -r reporte.zip target/
+
+    # ---------------------------------------------------------
+    # CORREO HTML FINAL CON RESUMEN + ZIP ADJUNTO
+    # ---------------------------------------------------------
     - name: Notificar fin de ejecución y adjuntar reporte
-      if: always() 
+      if: always()
       uses: dawidd6/action-send-mail@v3
       with:
         server_address: ${{ secrets.MAIL_SERVER }}
@@ -73,10 +97,35 @@ jobs:
         subject: "🟢 Pruebas finalizadas - FrontEnd Integración"
         to: ${{ github.event.inputs.correo }}
         from: ${{ secrets.MAIL_FROM }}
-        body: |
-          Hola,
-          Las pruebas han terminado de ejecutarse.
-          Tag ejecutado: ${{ github.event.inputs.tag }}
+        html_body: |
+          <div style="font-family: Arial; padding: 20px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/GitHub_logo_2013.svg/2560px-GitHub_logo_2013.svg.png" width="180">
 
-          Se adjunta el reporte generado.
-        attachments: target/cucumber-report.html
+            <h2 style="color:#28a745;">🟢 Pruebas Finalizadas</h2>
+
+            <p><strong>Tag ejecutado:</strong> 
+              <span style="color:#28a745;">${{ github.event.inputs.tag }}</span>
+            </p>
+
+            <h3 style="color:#333;">📊 Resultado:</h3>
+            <p>
+              Estado: 
+              <strong style="color:${{ steps.run_tests.outputs.resultado == '0' && 'green' || 'red' }};">
+                ${{ steps.run_tests.outputs.resultado == '0' && 'PASSED' || 'FAILED' }}
+              </strong>
+            </p>
+
+            <h3>📄 Reporte:</h3>
+            <p>
+              Puedes ver el reporte completo en el artefacto adjunto o descargar el ZIP enviado.
+            </p>
+
+            <p>
+              🔗 <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" 
+              style="color:#007bff;">Ver ejecución completa en GitHub Actions</a>
+            </p>
+
+            <br>
+            <p>Saludos,<br><strong>QA Automation Yrvin Pachas</strong></p>
+          </div>
+        attachments: reporte.zip
