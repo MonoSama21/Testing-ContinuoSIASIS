@@ -6,29 +6,77 @@ on:
         description: Ingrese el nombre del tag del escenario
         required: true
         type: string
+      correo:
+        description: Ingrese el correo donde llegará la notificación
+        required: true
+        type: string
 jobs:
   Pruebas-FrontEnd-Integracion:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
+
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+      
+# Enviar correo ANTES de ejecutar las pruebas
+    - name: Notificar inicio de ejecución
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.MAIL_SERVER }}
+        server_port: ${{ secrets.MAIL_PORT }}
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: "🔵 Pruebas iniciadas - FrontEnd Integración"
+        to: ${{ github.event.inputs.correo }}
+        from: ${{ secrets.MAIL_FROM }}
+        body: |
+          Hola,
+          Las pruebas de integración han comenzado.
+          Tag ejecutado: ${{ github.event.inputs.tag }}
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
     - name: Run Playwright tests by tag
       run: npm test -- --tags="${{ github.event.inputs.tag }}"
       continue-on-error: true
+
     - name: Generate report
       run: npm run report
+
     - name: List target directory
       run: ls -R target
+
     - uses: actions/upload-artifact@v4
       if: always()
       with:
         name: cucumber-report
         path: target/
         retention-days: 30
+        
+ # Enviar correo FINAL con reporte adjunto
+    - name: Notificar fin de ejecución y adjuntar reporte
+      if: always() 
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: ${{ secrets.MAIL_SERVER }}
+        server_port: ${{ secrets.MAIL_PORT }}
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: "🟢 Pruebas finalizadas - FrontEnd Integración"
+        to: ${{ github.event.inputs.correo }}
+        from: ${{ secrets.MAIL_FROM }}
+        body: |
+          Hola,
+          Las pruebas han terminado de ejecutarse.
+          Tag ejecutado: ${{ github.event.inputs.tag }}
+
+          Se adjunta el reporte generado.
+        attachments: target/**
