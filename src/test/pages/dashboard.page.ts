@@ -26,7 +26,13 @@ export class DashboardPage {
             case "Personal Administrativo":
                 await this.dashboardLocator.optionAdministrativeStaff.click();
                 console.log("✅ Se hizo click en Personal Administrativo");
+                break;
+            case "Registros de Personal":
+                await this.dashboardLocator.optionPersonalRecords.click();
+                console.log("✅ Se hizo click en Registros de Personal");
+                break;
             default:
+                console.log(`❌ Opción no reconocida: ${option}`);
                 break;
         }
     }

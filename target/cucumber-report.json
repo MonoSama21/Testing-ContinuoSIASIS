@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario con el rol de Directivo\n    Quiero poder consultar todos los personales administrativos disponibles\n    Para poder visualizar sus datos",
+    "description": "    Como usuario con rol de Directivo\n    Quiero poder consultar las asistencias de cualquier personal del colegio(Directivo, Profesor de Primaria, Profesor de Secundaria, Auxiliar o Personal Administrativo)\n    Para poder evaluar el desempeño del personal del colegio",
     "elements": [
       {
         "description": "",
-        "id": "consulta-de-personal-administrativo;validar-que-el-rol-directivo-puede-consultar-el-personal-administrativo",
-        "keyword": "Scenario",
-        "line": 14,
-        "name": "Validar que el rol DIRECTIVO puede consultar el personal administrativo",
+        "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo;fdfdsf",
+        "keyword": "Scenario Outline",
+        "line": 24,
+        "name": "fdfdsf",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 126371999
+              "duration": 370937600
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1674761399
+              "duration": 1161094500
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 45660400
+              "duration": 228843500
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2068400099
+              "duration": 2347762400
             }
           },
           {
@@ -66,72 +66,72 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5201299
+              "duration": 32646600
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 15,
-            "name": "hago click en el apartado de \"Personal Administrativo\"",
+            "name": "hago click en el apartado de \"Registros de Personal\"",
             "match": {
               "location": "src\\test\\steps\\dashboard.step.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 5150211699
+              "duration": 2955344999
             }
           },
           {
             "arguments": [],
-            "keyword": "Then ",
+            "keyword": "And ",
             "line": 16,
-            "name": "se muestra en pantalla la lista de personal administrativo disponibles",
+            "name": "en el campo tipo de personal selecciono un \"Profesor de Primaria\"",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:8"
+              "location": "src\\test\\steps\\personalRecords.step.ts:8"
             },
             "result": {
               "status": "passed",
-              "duration": 4943270800
+              "duration": 1046565699
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 17,
-            "name": "se muestra los nombres y apellidos del personal administrativo",
+            "name": "selecciono un usuario",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:13"
+              "location": "src\\test\\steps\\personalRecords.step.ts:13"
             },
             "result": {
               "status": "passed",
-              "duration": 29695599
+              "duration": 2093024700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "selecciono un mes superior a Junio",
+            "match": {
+              "location": "src\\test\\steps\\personalRecords.step.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 36855500
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 19,
-            "name": "se muestra el estado del personal administrativo",
+            "name": "doy click en el boton de Buscar",
             "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:21"
+              "location": "src\\test\\steps\\personalRecords.step.ts:21"
             },
             "result": {
               "status": "passed",
-              "duration": 41469499
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 20,
-            "name": "se muestra la foto de cada personal administrativo",
-            "match": {
-              "location": "src\\test\\steps\\administrativeStaff.step.ts:25"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 30433699
+              "duration": 155329499
             }
           },
           {
@@ -139,7 +139,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 17305000
+              "duration": 78706300
             }
           }
         ],
@@ -149,31 +149,31 @@
             "line": 1
           },
           {
-            "name": "@consulta-personal-administrativo",
+            "name": "@consulta-asistencias-personal",
             "line": 1
           },
           {
-            "name": "@Escenario04",
+            "name": "@Escenario05",
             "line": 13
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "consulta-de-personal-administrativo",
+    "id": "consulta-de-aasistencias-de-personal-por-el-rol-directivo",
     "line": 2,
     "keyword": "Feature",
-    "name": "Consulta de Personal administrativo",
+    "name": "Consulta de Aasistencias de Personal por el rol DIRECTIVO",
     "tags": [
       {
         "name": "@test",
         "line": 1
       },
       {
-        "name": "@consulta-personal-administrativo",
+        "name": "@consulta-asistencias-personal",
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-directivo\\consulta-personal-administrativo.feature"
+    "uri": "src\\resources\\features\\rol-directivo\\consulta-asistencias-personal.feature"
   }
 ]

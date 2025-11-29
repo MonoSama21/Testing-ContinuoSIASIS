@@ -23,4 +23,8 @@ export class DashboardLocator {
     get optionAdministrativeStaff(){
         return this.page.getByRole('button', { name: 'Personal Administrativo' });
     }
+
+    get optionPersonalRecords(){
+        return this.page.getByRole('button', { name: 'Registros' }).first();
+    }
 }
