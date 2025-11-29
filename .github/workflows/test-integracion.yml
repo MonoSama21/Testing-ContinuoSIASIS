@@ -79,4 +79,4 @@ jobs:
           Tag ejecutado: ${{ github.event.inputs.tag }}
 
           Se adjunta el reporte generado.
-        attachments: target/**
+        attachments: target/cucumber-report.html
