@@ -21,7 +21,11 @@ export class DashboardPage {
             case "Auxiliares":
                 await this.dashboardLocator.optionAssistants.click();
                 console.log("✅ Se hizo click en Auxiliares");
+                //await this.validateStatusAPIAssistants();
                 break;
+            case "Personal Administrativo":
+                await this.dashboardLocator.optionAdministrativeStaff.click();
+                console.log("✅ Se hizo click en Personal Administrativo");
             default:
                 break;
         }

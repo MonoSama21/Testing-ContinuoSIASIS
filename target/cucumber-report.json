@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario con rol de Directivo\n    Quiero poder consultar todos los axuliares disponibles\n    Para poder visualizar sus datos",
+    "description": "    Como usuario con el rol de Directivo\n    Quiero poder consultar todos los personales administrativos disponibles\n    Para poder visualizar sus datos",
     "elements": [
       {
         "description": "",
-        "id": "consulta-de-auxiliares-por-el-rol-directivo;validar-que-el-rol-directivo-puede-consultar-los-auxiliares",
+        "id": "consulta-de-personal-administrativo;validar-que-el-rol-directivo-puede-consultar-el-personal-administrativo",
         "keyword": "Scenario",
         "line": 14,
-        "name": "Validar que el rol DIRECTIVO puede consultar los auxiliares",
+        "name": "Validar que el rol DIRECTIVO puede consultar el personal administrativo",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 217139199
+              "duration": 252614899
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1165283000
+              "duration": 1212664300
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 112760299
+              "duration": 128929299
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3440152300
+              "duration": 2230512899
             }
           },
           {
@@ -66,98 +66,33 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16285100
+              "duration": 19375699
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 15,
-            "name": "hago click en el apartado de \"Auxiliares\"",
+            "name": "hago click en el apartado de \"Personal Administrativo\"",
             "match": {
               "location": "src\\test\\steps\\dashboard.step.ts:11"
             },
             "result": {
               "status": "passed",
-              "duration": 6340161099
+              "duration": 4427417400
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 16,
-            "name": "se muestra en pantalla la lista de auxiliares disponibles",
+            "name": "se muestra en pantalla la lista de personal administrativo disponibles",
             "match": {
-              "location": "src\\test\\steps\\assistants.step.ts:10"
+              "location": "src\\test\\steps\\administrativeStaff.step.ts:8"
             },
             "result": {
               "status": "passed",
-              "duration": 2475328700
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 17,
-            "name": "se muestra los nombres y apellidos del auxiliar",
-            "match": {
-              "location": "src\\test\\steps\\assistants.step.ts:15"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 116719099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 18,
-            "name": "se muestra el numero de contacto del axuliar",
-            "match": {
-              "location": "src\\test\\steps\\assistants.step.ts:19"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 61092999
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 19,
-            "name": "se muestra el estado del auxiliar",
-            "match": {
-              "location": "src\\test\\steps\\assistants.step.ts:23"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 37310000
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 20,
-            "name": "se muestra el correo del auxiliar",
-            "match": {
-              "location": "src\\test\\steps\\assistants.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 36045600
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 21,
-            "name": "se muestra la foto de cada auxiliar",
-            "match": {
-              "location": "src\\test\\steps\\assistants.step.ts:31"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 34846099
+              "duration": 3490382900
             }
           },
           {
@@ -165,33 +100,33 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 48560099
+              "duration": 103593500
             }
           }
         ],
         "tags": [
           {
-            "name": "@consulta-auxiliares",
+            "name": "@consulta-personal-administrativo",
             "line": 1
           },
           {
-            "name": "@Escenario03",
+            "name": "@Escenario04",
             "line": 13
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "consulta-de-auxiliares-por-el-rol-directivo",
+    "id": "consulta-de-personal-administrativo",
     "line": 2,
     "keyword": "Feature",
-    "name": "Consulta de Auxiliares por el rol DIRECTIVO",
+    "name": "Consulta de Personal administrativo",
     "tags": [
       {
-        "name": "@consulta-auxiliares",
+        "name": "@consulta-personal-administrativo",
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-directivo\\consulta-auxiliares.feature"
+    "uri": "src\\resources\\features\\rol-directivo\\consulta-personal-administrativo.feature"
   }
 ]

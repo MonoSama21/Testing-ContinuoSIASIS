@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test'
 
-export class AssistantsLocator {
+export class AdministrativeStaffLocator {
     readonly page: Page;
 
 
@@ -8,7 +8,12 @@ export class AssistantsLocator {
         this.page = page;
     }
 
-    get tarjetAssistants(){
+    
+    get optionsDashboard(){
+        return this.page.locator('#sidebar');
+    }
+
+    get tarjetsAdministrativeStaff(){
         return this.page.locator('div[class*="w-[285px]"][class*="h-[355px]"]');
     }
     
@@ -22,17 +27,12 @@ export class AssistantsLocator {
         return this.page.locator('div.flex.items-center span[title]');
     }
 
-    // Estado del auxiliar
+    // Estado del personal administrativo
     get stateSpan() {
         return this.page.locator('span.text-verde-principal');
     }
 
-    // Correo: span con @
-    get emailSpan() {
-        return this.page.locator('span[title*="@"]');
-    }
-
-    // Foto del auxiliar
+    // Foto del personal administrativo
     get photoImg() {
         return this.page.locator('img.Foto-Perfil-Usuario');
     }

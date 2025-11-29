@@ -19,4 +19,8 @@ export class DashboardLocator {
     get optionAssistants(){
         return this.page.getByRole('button', { name: 'Auxiliares' });
     }
+
+    get optionAdministrativeStaff(){
+        return this.page.getByRole('button', { name: 'Personal Administrativo' });
+    }
 }

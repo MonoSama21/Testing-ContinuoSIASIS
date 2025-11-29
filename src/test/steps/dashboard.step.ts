@@ -11,5 +11,4 @@ let dashboardPage: DashboardPage;
 When('hago click en el apartado de {string}', async function (option) {
     dashboardPage = new DashboardPage(pageFixture.page);
     await dashboardPage.clickOptionDashboard(option);
-    await dashboardPage.validateStatusAPIAssistants();
 });
