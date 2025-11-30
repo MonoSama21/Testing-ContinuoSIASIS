@@ -7,16 +7,18 @@ on:
         description: Ingrese el nombre del tag del escenario
         required: true
         type: string
+        default: "@test"
       correo:
         description: Ingrese el correo donde llegará la notificación
         required: true
         type: string
-
+        default: "2101010261@undc.edu.pe"
+        
   schedule:
     # Lunes a Viernes 8 AM — Tag diario
     - cron: "0 13 * * 1-5"   # 13 UTC = 8AM Perú
     # Sábado y Domingo 7 PM — Tag de fin de semana
-    - cron: "10 0 * * 6,0"    # 00 UTC = 7PM Perú
+    - cron: "0 6 * * 6,0"    # 00 UTC = 1:00AM Perú
 
 jobs:
   Pruebas-FrontEnd-Integracion:
