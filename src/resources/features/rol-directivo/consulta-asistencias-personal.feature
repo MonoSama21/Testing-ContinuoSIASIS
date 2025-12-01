@@ -1,4 +1,4 @@
-@test @consulta-asistencias-personal
+@test @consulta-asistencias-personal @DailyTest
 Feature: Consulta de Aasistencias de Personal por el rol DIRECTIVO
     Como usuario con rol de Directivo
     Quiero poder consultar las asistencias de cualquier personal del colegio(Directivo, Profesor de Primaria, Profesor de Secundaria, Auxiliar o Personal Administrativo)

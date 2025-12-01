@@ -39,4 +39,12 @@ export class DashboardLocator {
     get btnEditProfile(){
         return this.page.getByText('Editar Perfil', { exact: true });
     }
+
+    get modalNonWorkingDay(){
+        return this.page.locator("#mensaje-informativo-asistencia");
+    }
+
+    get lblNonWorkingDay() {
+        return this.page.locator('//p[@class="text-gray-800 font-medium leading-tight"]'); 
+    }
 }

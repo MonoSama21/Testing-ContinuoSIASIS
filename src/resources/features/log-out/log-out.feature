@@ -1,4 +1,4 @@
-@test @log-out
+@test @log-out @DailyTest
 Feature: Cierre de sesión exitoso en el sistema SIASIS
     Como usuario del sistema SIASIS
     Quiero poder cerrar sesión de manera correcta

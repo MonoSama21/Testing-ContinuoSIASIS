@@ -1,4 +1,4 @@
-@test @login-happy-path
+@test @login-happy-path @DailyTest
 Feature: Inicio de sesión exitoso en el sistema SIASIS
     Como usuario del sistema SIASIS
     Quiero poder iniciar sesión con diferentes roles

@@ -12,6 +12,17 @@ export class DashboardPage {
         this.dashboardLocator = new DashboardLocator(page);
     }
 
+    // Calcula el día actual (lunes, martes, etc)
+    getCurrentDay(): string {
+        const dias = [
+            "domingo", "lunes", "martes", "miércoles",
+            "jueves", "viernes", "sábado"
+        ];
+
+        const hoy = new Date();
+        return dias[hoy.getDay()];
+    }
+
     async clickOptionAssistants() {
         await this.dashboardLocator.optionAssistants.click();
     }
@@ -60,6 +71,19 @@ export class DashboardPage {
         await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visibl
         await this.dashboardLocator.btnEditProfile.click();                             // Clic en "Editar Perfil"
         console.log("✅ Se hizo click en Editar Perfil");
+    }
+
+    async validateModalNonWorkingDayIsVisible() {
+        await this.dashboardLocator.modalNonWorkingDay.isVisible();
+        const textModal = await this.dashboardLocator.modalNonWorkingDay.innerText();
+        console.log("El texto del modal es:", textModal);
+    }
+
+    // Valida que el sistema muestre el día correcto
+    async validateNonWorkingDayMessage(expectedDay: string) {
+        const text = (await this.dashboardLocator.lblNonWorkingDay.textContent())?.toLowerCase() || "";
+        expect(text).toContain(expectedDay.toLowerCase());
+        console.log("✔ Se validó correctamente el día en pantalla", text);
     }
 
 }

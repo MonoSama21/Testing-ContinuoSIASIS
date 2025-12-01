@@ -1,4 +1,4 @@
-@test @consulta-auxiliares @WeekendTest
+@test @consulta-auxiliares @WeekendTest @DailyTest
 Feature: Consulta de Auxiliares por el rol DIRECTIVO
     Como usuario con rol de Directivo
     Quiero poder consultar todos los axuliares disponibles

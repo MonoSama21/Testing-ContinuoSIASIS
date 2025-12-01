@@ -1,4 +1,4 @@
-@test @consulta-personal-administrativo
+@test @consulta-personal-administrativo @DailyTest
 Feature: Consulta de Personal administrativo
     Como usuario con el rol de Directivo
     Quiero poder consultar todos los personales administrativos disponibles

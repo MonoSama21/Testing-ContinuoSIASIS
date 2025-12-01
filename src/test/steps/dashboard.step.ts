@@ -24,3 +24,24 @@ When('en la barra de navegacion selecciono el apartado de Editar Perfil', async 
     await dashboardPage.clickEditProfile();
 });
 
+When('estoy en un día no laborable', async function () {
+    dashboardPage = new DashboardPage(pageFixture.page);
+    const diaActual = dashboardPage.getCurrentDay();
+    // Guardar el valor en el contexto de Cucumber
+    this.context = { diaActual };
+    console.log("📌 Día no laborable detectado:", diaActual);
+});
+
+
+Then('aparece un modal indicando que no se puede registrar la asistencia', async function () {
+    dashboardPage = new DashboardPage(pageFixture.page);
+    await dashboardPage.validateModalNonWorkingDayIsVisible();
+});
+
+
+Then('aparece un texto que indica el dia no laboral en el que estamos', async function () {
+    const { diaActual } = this.context;
+    dashboardPage = new DashboardPage(pageFixture.page);
+    await dashboardPage.validateNonWorkingDayMessage(diaActual);
+    console.log("✅ Validado correctamente el día en pantalla:", diaActual);
+});
