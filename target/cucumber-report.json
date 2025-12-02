@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como usuario con rol de Directivo\n    Quiero que el rol de Profesor de primaria no pueda registrar su asistencia un día no laborable\n    Para que no exista confusión con registros de asistencia",
+    "description": "    Como usuario con rol de Directivo\n    Quiero poder editar mis datos personales\n    Para mantener mi informacion actualizada",
     "elements": [
       {
         "description": "",
-        "id": "indisponibilidad-del-rol-profesor-de-primaria-para-registrar-asistencia-en-día-no-laborable;validar-que-no-se-puede-registrar-la-asistencia-del-rol-profesor-de-primaria-un-día-no-laborable",
+        "id": "edicion-de-datos-personales-por-rol-directivo;validar-que-el-rol-directivo-puede-editar-su-informacion-personal",
         "keyword": "Scenario",
-        "line": 14,
-        "name": "Validar que no se puede registrar la asistencia del rol Profesor de Primaria un día no laborable",
+        "line": 15,
+        "name": "Validar que el rol Directivo puede editar su informacion personal",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 260383599
+              "duration": 211082899
             }
           },
           {
@@ -27,20 +27,20 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1097646899
+              "duration": 1060584499
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 9,
-            "name": "selecciono el rol \"PROFESOR_PRIMARIA\"",
+            "name": "selecciono el rol \"DIRECTIVO\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 148550400
+              "duration": 104114400
             }
           },
           {
@@ -53,60 +53,85 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3512396499
+              "duration": 2311063799
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 11,
-            "name": "accedo al sistema como \"PROFESOR_PRIMARIA\"",
+            "name": "accedo al sistema como \"DIRECTIVO\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 23968300
+              "duration": 10182626800
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 15,
-            "name": "estoy en un día no laborable",
-            "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:27"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 3860099
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
             "line": 16,
-            "name": "aparece un modal indicando que no se puede registrar la asistencia",
+            "name": "en la barra de navegacion selecciono el apartado de Editar Perfil",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:36"
+              "location": "src\\test\\steps\\dashboard.step.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 9752992599
+              "duration": 144641700
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 17,
-            "name": "aparece un texto que indica el dia no laboral en el que estamos",
+            "name": "doy click en el boton de Editar Datos",
             "match": {
-              "location": "src\\test\\steps\\dashboard.step.ts:42"
+              "location": "src\\test\\steps\\myData.step.ts:12"
             },
             "result": {
-              "status": "failed",
-              "duration": 5719162400,
-              "error_message": "locator.textContent: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('//p[@class=\"text-gray-800 font-medium leading-tight\"]')\u001b[22m\n\n    at DashboardPage.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:84:68)\n    at step (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:33:23)\n    at Object.next (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:14:53)\n    at C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:8:71\n    at __awaiter (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:4:12)\n    at DashboardPage.validateNonWorkingDayMessage (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\dashboard.page.ts:188:16)\n    at World.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:45:25)\n    at step (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:33:23)\n    at Object.next (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:14:53)\n    at C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:8:71\n    at __awaiter (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:4:12)\n    at World.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\steps\\dashboard.step.ts:115:12)"
+              "status": "passed",
+              "duration": 5113286900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "edito mi informacion personal",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 147418000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "guardo los cambios realizados",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73260899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 20,
+            "name": "verifico que se han guardado los cambios",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2398878200
             }
           },
           {
@@ -114,33 +139,41 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 55057000
+              "duration": 97519400
             }
           }
         ],
         "tags": [
           {
-            "name": "@WeekendTest",
+            "name": "@test",
             "line": 1
           },
           {
-            "name": "@Escenario09",
-            "line": 13
+            "name": "@DailyTest",
+            "line": 1
+          },
+          {
+            "name": "@Escenario06",
+            "line": 14
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "indisponibilidad-del-rol-profesor-de-primaria-para-registrar-asistencia-en-día-no-laborable",
+    "id": "edicion-de-datos-personales-por-rol-directivo",
     "line": 2,
     "keyword": "Feature",
-    "name": "Indisponibilidad del rol Profesor de Primaria para registrar asistencia en día no laborable",
+    "name": "Edicion de Datos Personales por Rol Directivo",
     "tags": [
       {
-        "name": "@WeekendTest",
+        "name": "@test",
+        "line": 1
+      },
+      {
+        "name": "@DailyTest",
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-profesor-primaria\\indisponibilidad-asistencia-no-laborable-profesor-primaria.feature"
+    "uri": "src\\resources\\features\\rol-directivo\\edicion-datos-personales.feature"
   }
 ]

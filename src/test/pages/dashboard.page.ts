@@ -66,6 +66,7 @@ export class DashboardPage {
     }
 
     async clickEditProfile() {
+        await this.dashboardLocator.iconDeploymentMenu.isEnabled();
         await this.dashboardLocator.iconDeploymentMenu.waitFor({ state: 'visible' }); // Asegurar que el ícono de despliegue esté visible
         await this.dashboardLocator.iconDeploymentMenu.click();                         // Abrir el menú
         await this.page.waitForSelector('#Menu-deplegable', { state: 'visible' });      // 🔥 Esperar a que el menú desplegable exista y sea visibl

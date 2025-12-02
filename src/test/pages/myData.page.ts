@@ -70,6 +70,8 @@ export class MyDataPage {
         } else {
             throw new Error('El texto del modal no es el esperado.');
         }
+        const lblUser = await this.myDatLocator.lblUserNamesAndLastNames.textContent();
+        console.log("El nombre es:", lblUser)
     }
 
     async restoreOriginalDataExecutive(){
@@ -80,11 +82,47 @@ export class MyDataPage {
             await this.myDatLocator.inputPhone.fill(this.ORIGINAL_PHONE_DIRECTIVO);
             await this.myDatLocator.inputDNI.fill(this.ORIGINAL_DNI_DIRECTIVO);
             await this.clickBtnSaveChanges();
+            await expect(this.myDatLocator.inputNames).not.toBeVisible();
+            await this.validateModalSaveChangesIsVisible();
 
         } catch (error) {
             throw new Error(`Error al restaurar los datos originales: ${error}`);
         }
-        
-
     }
+
+    async validateRestoreOriginalDataExecutive(){
+        try{
+            await expect(this.myDatLocator.lblNames).toHaveText(this.ORIGINAL_NAME_DIRECTIVO);
+            await expect(this.myDatLocator.lblLastNames).toHaveText(this.ORIGINAL_LASTNAME_DIRECTIVO);
+            await expect(this.myDatLocator.lblPhone).toHaveText(this.ORIGINAL_PHONE_DIRECTIVO);
+            await expect(this.myDatLocator.lblDNI).toHaveText(this.ORIGINAL_DNI_DIRECTIVO);
+            console.log("✔ Se validó correctamente los datos originales");
+        } catch (error){
+            throw new Error(`Error al validar los datos originales: ${error}`);
+        }
+    }
+
+    async clickBtnChangePhoto(){
+        await this.myDatLocator.btnChangePhoto.click();
+    }
+
+    async uploadingPhotoNotAllowed(){
+        await this.page.setInputFiles('#foto', 'src/resources/fixtures/img/pesado.jpg');
+    }
+
+    async validateModalPhotoNotAllowedIsVisible(){
+        const locator = this.myDatLocator.modalPhotoNotAllowed;
+
+        await expect(locator).toBeVisible();
+        await expect(locator).toContainText("La imagen no debe superar los 5MB");
+        
+        console.log("✔ El modal muestra correctamente el mensaje de límite de 5MB");
+    }
+
+    async validateDisabledBtnChangePhoto(){
+        await expect(this.myDatLocator.btnModalChangePhoto).toBeDisabled();
+        console.log("El boton de Cambiar Foto dentro del modal está deshabilitado")
+    }
+
+
 };

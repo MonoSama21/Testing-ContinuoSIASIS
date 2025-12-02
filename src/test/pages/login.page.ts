@@ -17,10 +17,14 @@ export class LoginPage {
     }
 
     async fillUsername(username: string) {
+        await this.loginLocator.inputUsername.waitFor({ state: 'visible' });
+        await this.loginLocator.inputUsername.isEnabled();
         await this.loginLocator.inputUsername.fill(username);
     }
 
     async fillPassword(password: string) {
+        await this.loginLocator.inputPassword.waitFor({ state: 'visible' });
+        await this.loginLocator.inputPassword.isEnabled();
         await this.loginLocator.inputPassword.fill(password);
     }
 

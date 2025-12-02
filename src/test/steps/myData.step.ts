@@ -30,7 +30,24 @@ Then('restauro los datos originales', async function () {
     await myDataPage.restoreOriginalDataExecutive();
 });
 
-Then('verifico que los datos originales son correctos', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
+Then('verifico que los datos originales son correctos', async function () {
+    await myDataPage.validateRestoreOriginalDataExecutive();
+});
+
+
+When('hago click en Cambiar Foto', async function () {
+    await myDataPage.clickBtnChangePhoto();
+
+});
+
+When('subo una foto de tamaño mayor a 5MB', async function () {
+    await myDataPage.uploadingPhotoNotAllowed();
+});
+
+Then('aparece un modal indicando que la imagen no debe superar los 5MB', async function () {
+    await myDataPage.validateModalPhotoNotAllowedIsVisible();
+});
+
+Then('el boton del modal para cambiar foto debe permanecer desahabilitado', async function () {
+    await myDataPage.validateDisabledBtnChangePhoto();
 });
