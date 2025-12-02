@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 211082899
+              "duration": 237132599
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1060584499
+              "duration": 1215837099
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 104114400
+              "duration": 114413899
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2311063799
+              "duration": 2182708699
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10182626800
+              "duration": 39095200
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 144641700
+              "duration": 17902595000
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5113286900
+              "duration": 2531407499
             }
           },
           {
@@ -105,7 +105,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 147418000
+              "duration": 151476599
             }
           },
           {
@@ -118,7 +118,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 73260899
+              "duration": 70439299
             }
           },
           {
@@ -130,8 +130,9 @@
               "location": "src\\test\\steps\\myData.step.ts:25"
             },
             "result": {
-              "status": "passed",
-              "duration": 2398878200
+              "status": "failed",
+              "duration": 6920368700,
+              "error_message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('header h1.text-blanco')\nExpected substring: \u001b[32m\"Audreanne\"\u001b[39m\nReceived string:    \u001b[31m\"Jazmyn Paucek\"\u001b[39m\nTimeout: 5000ms\n\nCall log:\n\u001b[2m  - Expect \"to.have.text\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('header h1.text-blanco')\u001b[22m\n\u001b[2m    9 × locator resolved to <h1 class=\"text-blanco font-extrabold text-left leading-5 sxs-only:text-[0.8rem] sxs-only:leading-4 xs-only:text-[0.9rem] xs-only:leading-4 max-sm:text-[1rem] max-sm:leading-5 text-[1.1rem] landscape-small:text-[0.99rem] landscape-small:leading-[1.1rem] landscape-tablet-sm:text-[0.99rem] landscape-tablet-sm:leading-[1.1rem]\">…</h1>\u001b[22m\n\u001b[2m      - unexpected value \"Jazmyn Paucek\"\u001b[22m\n\n    at Proxy.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\node_modules\\playwright\\lib\\matchers\\expect.js:224:24)\n    at MyDataPage.<anonymous> (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\myData.page.ts:109:55)\n    at step (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\myData.page.ts:33:23)\n    at Object.next (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\myData.page.ts:14:53)\n    at fulfilled (C:\\Users\\Yrvin PS\\Desktop\\X CICLO TESIS\\SIASIS\\Testing-ContinuoSIASIS\\src\\test\\pages\\myData.page.ts:5:58)"
             }
           },
           {
@@ -139,7 +140,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 97519400
+              "duration": 112663600
             }
           }
         ],

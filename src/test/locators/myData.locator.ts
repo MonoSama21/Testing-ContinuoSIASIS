@@ -72,6 +72,10 @@ export class MyDataLocator {
         return this.page.locator("//div[contains(@class,'text-center') and contains(@class,'text-[1rem]')]");    
     }
 
+    get lblHeaderUser(){
+        return this.page.locator("header h1.text-blanco");
+    }
+
     
 
 }

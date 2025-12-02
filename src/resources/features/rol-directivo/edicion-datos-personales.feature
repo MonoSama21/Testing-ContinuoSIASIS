@@ -10,7 +10,7 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "DIRECTIVO"
 
-#ACA HAY UN BUG QUE ACTUALIZO PERO EN EL HEADER NO SE ACTUALIZA, AUTOMATIZAR ESE BUG
+#ACA HAY UN BUG QUE ACTUALIZO PERO EN EL HEADER NO SE ACTUALIZA
 @Escenario06  
 Scenario: Validar que el rol Directivo puede editar su informacion personal
     When en la barra de navegacion selecciono el apartado de Editar Perfil

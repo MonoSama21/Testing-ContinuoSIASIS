@@ -24,6 +24,7 @@ When('guardo los cambios realizados', async function () {
 
 Then('verifico que se han guardado los cambios', async function () {
     await myDataPage.validateModalSaveChangesIsVisible();
+    await myDataPage.validateHeaderUserName();
 });
 
 Then('restauro los datos originales', async function () {

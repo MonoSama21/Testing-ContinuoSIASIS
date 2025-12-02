@@ -15,6 +15,17 @@ export class MyDataPage {
     readonly ORIGINAL_GENDER_DIRECTIVO   = "Femenino";
     readonly ORIGINAL_DNI_DIRECTIVO      = "15430124";
 
+    //DATOS ORIGINALES PARA EL ROL PROFESOR_PRIMARIA
+    readonly ORIGINAL_PHONE_PROFESOR_PRIMARIA = "946879371";
+    readonly ORIGINAL_EMAIL_PROFESOR_PRIMARIA = "Profesora_mary@hotmail.com";
+    
+    generatedName: string = "";
+    generatedLastName: string = "";
+    firstGeneratedName: string = "";
+    firstGeneratedLastName: string = "";
+
+
+
     constructor(page: Page) {
         this.page = page;
         this.myDatLocator = new MyDataLocator(page);
@@ -26,16 +37,24 @@ export class MyDataPage {
     }
     
     async editDataName() {
-        const randomName = faker.person.firstName() + " " + faker.person.middleName();
-        await this.myDatLocator.inputNames.fill(randomName);
-        console.log("✅ Se editó el nombre correctamente con:", randomName);
+        const fullName = faker.person.firstName() + " " + faker.person.middleName();
+        this.generatedName = fullName;
+        this.firstGeneratedName = fullName.split(" ")[0]; // primer nombre
+
+        await this.myDatLocator.inputNames.fill(fullName);
+        console.log("✅ Nombre generado:", fullName);
+        console.log("➡ Primer nombre:", this.firstGeneratedName);
     }
 
-    async editDataLastName(){
-        const randomLastName = faker.person.lastName() + " " + faker.person.lastName();
-        await this.myDatLocator.inputLastNames.fill(randomLastName);
-        console.log("✅ Se editó el apellido correctamente con:", randomLastName);
-    } 
+    async editDataLastName() {
+        const fullLastName = faker.person.lastName() + " " + faker.person.lastName();
+        this.generatedLastName = fullLastName;
+        this.firstGeneratedLastName = fullLastName.split(" ")[0]; // primer apellido
+
+        await this.myDatLocator.inputLastNames.fill(fullLastName);
+        console.log("✅ Apellidos generados:", fullLastName);
+        console.log("➡ Primer apellido:", this.firstGeneratedLastName);
+    }
 
     async editDataPhone(){
         const randomPhone = faker.helpers.replaceSymbols("9########");
@@ -70,9 +89,34 @@ export class MyDataPage {
         } else {
             throw new Error('El texto del modal no es el esperado.');
         }
+        // Obtener texto del lbl del usuario
         const lblUser = await this.myDatLocator.lblUserNamesAndLastNames.textContent();
-        console.log("El nombre es:", lblUser)
+        const lblFormatted = lblUser?.trim();
+
+        console.log("📌 Texto mostrado en el perfil:", lblFormatted);
+        console.log("📌 Valores generados:", this.generatedName, this.generatedLastName);
+
+        // Validación
+        expect(lblFormatted).toContain(this.generatedName);
+        expect(lblFormatted).toContain(this.generatedLastName);
+
+        console.log("✔ Se validó que el nombre y apellido actualizados aparecen correctamente en el perfil.");
     }
+
+    async validateHeaderUserName() {
+        const headerText = await this.myDatLocator.lblHeaderUser.textContent();
+        const headerFormatted = headerText?.replace(/\s+/g, ' ').trim();
+
+        console.log("📌 Texto del header:", headerFormatted);
+        console.log("📌 Debe mostrar:", this.firstGeneratedName, this.firstGeneratedLastName);
+
+        await expect(this.myDatLocator.lblHeaderUser).toContainText(this.firstGeneratedName);
+        await expect(this.myDatLocator.lblHeaderUser).toContainText(this.firstGeneratedLastName);
+
+        console.log("✔ El header muestra correctamente el primer nombre y primer apellido.");
+    }
+
+    
 
     async restoreOriginalDataExecutive(){
         try {
