@@ -18,6 +18,19 @@ Before(async function () {
   const page = await context.newPage();
   pageFixture.page = page;
 
+  // Sobrescribir console.log para adjuntar logs al reporte
+  const originalLog = console.log;
+  const self = this;
+  console.log = (...args: any[]) => {
+    const message = args.join(' ');
+    originalLog(message);
+    try {
+      self.attach(message, 'text/plain');
+    } catch (error) {
+      // Ignorar si no se puede adjuntar
+    }
+  };
+
   await page.setViewportSize({
     width: 1500,
     height: 800,

@@ -1,20 +1,20 @@
 [
   {
-    "description": "    Como Auxiliar del colegio\n    Quiero poder visualizar y editar mis datos personales según sea necesario\n    Para mantener mi información actualizada en el sistema y facilitar la comunicación con la comunidad educativa",
+    "description": "    Como usuario con rol de Directivo\n    Quiero poder editar mis datos personales\n    Para mantener mi informacion actualizada",
     "elements": [
       {
         "description": "",
-        "id": "edicion-de-datos-personales-por-rol-auxiliar;validar-que-el-rol-auxiliar-puede-editar-su-informacion-personal",
+        "id": "edicion-de-datos-personales-por-rol-directivo;validar-que-el-rol-directivo-puede-editar-su-foto-de-perfil-con-foto-de-peso-admitible",
         "keyword": "Scenario",
-        "line": 21,
-        "name": "Validar que el rol Auxiliar puede editar su informacion personal",
+        "line": 37,
+        "name": "Validar que el rol Directivo puede editar su foto de perfil con foto de peso admitible",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 204246800
+              "duration": 117903499
             }
           },
           {
@@ -27,21 +27,27 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1027309699
+              "duration": 969153000
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 9,
-            "name": "selecciono el rol \"AUXILIAR\"",
+            "name": "selecciono el rol \"DIRECTIVO\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:16"
             },
             "result": {
               "status": "passed",
-              "duration": 121906899
-            }
+              "duration": 62636899
+            },
+            "embeddings": [
+              {
+                "data": "U2VsZWNjaW9uYWRvIERpcmVjdGl2bw==",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
@@ -53,106 +59,136 @@
             },
             "result": {
               "status": "passed",
-              "duration": 2268762999
-            }
+              "duration": 2090661500
+            },
+            "embeddings": [
+              {
+                "data": "SW5ncmVzbyB1c3VhcmlvOiBkaXJlY3Rvci5hc3VuY2lvbjggeSBjb250cmFzZcOxYTogMTU0MzAxMjQ=",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "And ",
             "line": 11,
-            "name": "accedo al sistema como \"AUXILIAR\"",
+            "name": "accedo al sistema como \"DIRECTIVO\"",
             "match": {
               "location": "src\\test\\steps\\login.step.ts:27"
             },
             "result": {
               "status": "passed",
-              "duration": 14984099
-            }
+              "duration": 5547999
+            },
+            "embeddings": [
+              {
+                "data": "SW5ncmVzbyBleGl0b3NvIGNvbW8gRElSRUNUSVZP",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 22,
+            "line": 38,
             "name": "en la barra de navegacion selecciono el apartado de Editar Perfil",
             "match": {
               "location": "src\\test\\steps\\dashboard.step.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 14269793499
-            }
+              "duration": 6826027299
+            },
+            "embeddings": [
+              {
+                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gRWRpdGFyIFBlcmZpbA==",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 23,
+            "line": 39,
             "name": "doy click en el boton de Editar Datos",
             "match": {
               "location": "src\\test\\steps\\myData.step.ts:12"
             },
             "result": {
               "status": "passed",
-              "duration": 5082231499
+              "duration": 1401047200
+            },
+            "embeddings": [
+              {
+                "data": "4pyFIFNlIGhpem8gY2xpY2sgZW4gRWRpdGFyIERhdG9z",
+                "mime_type": "text/plain"
+              }
+            ]
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "hago click en Cambiar Foto",
+            "match": {
+              "location": "src\\test\\steps\\myData.step.ts:51"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 24415699
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 24,
-            "name": "solo se pueden editar los campos de celular y correo Electrónico",
+            "line": 41,
+            "name": "subo una foto de tamaño no mayor a 5MB",
             "match": {
-              "location": "src\\test\\steps\\myData.step.ts:17"
+              "location": "src\\test\\steps\\myData.step.ts:60"
             },
             "result": {
               "status": "passed",
-              "duration": 14008300
+              "duration": 9575800
             }
           },
           {
             "arguments": [],
             "keyword": "And ",
-            "line": 25,
-            "name": "edito los campos disponibles",
+            "line": 42,
+            "name": "realizo el cambio de foto",
             "match": {
-              "location": "src\\test\\steps\\myData.step.ts:21"
+              "location": "src\\test\\steps\\myData.step.ts:64"
             },
             "result": {
               "status": "passed",
-              "duration": 62746900
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "And ",
-            "line": 26,
-            "name": "guardo los cambios realizados",
-            "match": {
-              "location": "src\\test\\steps\\myData.step.ts:33"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 65081500
+              "duration": 305152000
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 27,
-            "name": "verifico que se han guardado los cambios asi como el mensaje de confirmacion",
+            "line": 44,
+            "name": "se valida el cambio correctamente tanto en el modal como en el header",
             "match": {
-              "location": "src\\test\\steps\\myData.step.ts:25"
+              "location": "src\\test\\steps\\myData.step.ts:68"
             },
             "result": {
               "status": "passed",
-              "duration": 1878311599
-            }
+              "duration": 7609876500
+            },
+            "embeddings": [
+              {
+                "data": "RWwgbW9kYWwgZGUgZm90byBhY3R1YWxpemFkYSBjb3JyZWN0YW1lbnRlIHNlIG11ZXN0cmEgY29ycmVjdGFtZW50ZS4=",
+                "mime_type": "text/plain"
+              }
+            ]
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 78955400
+              "duration": 18641999
             }
           }
         ],
@@ -166,17 +202,17 @@
             "line": 1
           },
           {
-            "name": "@Escenario144",
-            "line": 20
+            "name": "@bug",
+            "line": 36
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "edicion-de-datos-personales-por-rol-auxiliar",
+    "id": "edicion-de-datos-personales-por-rol-directivo",
     "line": 2,
     "keyword": "Feature",
-    "name": "Edicion de Datos Personales por Rol Auxiliar",
+    "name": "Edicion de Datos Personales por Rol Directivo",
     "tags": [
       {
         "name": "@test",
@@ -187,6 +223,6 @@
         "line": 1
       }
     ],
-    "uri": "src\\resources\\features\\rol-auxiliar\\edicion-datos-personales.feature"
+    "uri": "src\\resources\\features\\rol-directivo\\edicion-datos-personales.feature"
   }
 ]

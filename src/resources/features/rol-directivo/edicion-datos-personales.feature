@@ -33,7 +33,15 @@ Scenario: Validar que el rol Directivo puede editar su informacion personal mas 
 
 Scenario: Validar que el rol Directivo puede editar su informacion del usuario 
 
+@bug
 Scenario: Validar que el rol Directivo puede editar su foto de perfil con foto de peso admitible 
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el boton de Editar Datos
+    And hago click en Cambiar Foto
+    And subo una foto de tamaño no mayor a 5MB
+    And realizo el cambio de foto
+    #ACA HAY BUG PORQUE SOLO ACTUALIZA EN EL MODAL PERO NO EN EL HEADER, PERO NO HAY MANERA DE AUTOMATIZAR
+    Then se valida el cambio correctamente tanto en el modal como en el header
 
 @Escenario11
 Scenario: Validar que el rol Directivo puede editar su foto de perfil con foto de peso no admitible (mayor a 5MB)

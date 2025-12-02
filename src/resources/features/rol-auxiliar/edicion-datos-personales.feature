@@ -37,7 +37,7 @@ Scenario: Validar que el rol Auxiliar puede editar su foto de perfil con foto de
     #ACA HAY BUG PORQUE SOLO ACTUALIZA EN EL MODAL PERO NO EN EL HEADER
     Then se valida el cambio correctamente tanto en el modal como en el header
 
-@Escenario11
+@Escenario110
 Scenario: Validar que el rol Auxiliar puede editar su foto de perfil con foto de peso no admitible (mayor a 5MB)
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos

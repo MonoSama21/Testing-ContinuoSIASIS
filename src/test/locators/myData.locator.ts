@@ -71,6 +71,13 @@ export class MyDataLocator {
         .first();
     }
 
+    get modalSaveChangesPhoto(){
+        return this.page
+        .getByRole("alert")
+        .locator('p:text("Se actualizo correctamente la Foto")')
+        .first();
+    }
+
     get btnChangePhoto(){
         return this.page.locator('//button[@title="Guarda tu cambios"]').nth(1);
     }
@@ -81,6 +88,10 @@ export class MyDataLocator {
 
     get btnModalChangePhoto(){
         return this.page.locator('//button[@title="La imagen se esta subiendo"]');
+    }
+
+    get btnModalChangePhotoEnabled(){
+        return this.page.getByRole('dialog').getByRole('button', { name: 'Cambiar Foto' })
     }
 
     get lblUserNamesAndLastNames(){

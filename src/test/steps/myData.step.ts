@@ -57,6 +57,18 @@ When('subo una foto de tamaño mayor a 5MB', async function () {
     await myDataPage.uploadingPhotoNotAllowed();
 });
 
+When('subo una foto de tamaño no mayor a 5MB', async function () {
+    await myDataPage.uploadingPhotoAllowed();
+});
+
+When('realizo el cambio de foto', async function () {
+    await myDataPage.clickBtnEnabledModalChangePhoto();
+});
+
+Then('se valida el cambio correctamente tanto en el modal como en el header', async function () {
+    await myDataPage.validateModalSaveChangesPhotoIsVisible();
+});
+
 Then('aparece un modal indicando que la imagen no debe superar los 5MB', async function () {
     await myDataPage.validateModalPhotoNotAllowedIsVisible();
 });

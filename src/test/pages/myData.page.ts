@@ -107,6 +107,17 @@ export class MyDataPage {
         console.log("✔ Se validó que el nombre y apellido actualizados aparecen correctamente en el perfil.");
     }
 
+    async validateModalSaveChangesPhotoIsVisible(){  
+        await this.myDatLocator.modalSaveChangesPhoto.isVisible();
+        const texto = await this.myDatLocator.modalSaveChangesPhoto.textContent();
+        if (texto == "Se actualizo correctamente la Foto") {
+            console.log('El modal de foto actualizada correctamente se muestra correctamente.');
+        } else {
+            throw new Error('El texto del modal no es el esperado.');
+        }
+ 
+    }
+
     async validateHeaderUserName() {
         const headerText = await this.myDatLocator.lblHeaderUser.textContent();
         const headerFormatted = headerText?.replace(/\s+/g, ' ').trim();
@@ -158,6 +169,10 @@ export class MyDataPage {
         await this.page.setInputFiles('#foto', 'src/resources/fixtures/img/pesado.jpg');
     }
 
+    async uploadingPhotoAllowed(){
+        await this.page.setInputFiles('#foto', 'src/resources/fixtures/img/admitible2.jpg');
+    }
+
     async validateModalPhotoNotAllowedIsVisible(){
         const locator = this.myDatLocator.modalPhotoNotAllowed;
 
@@ -170,6 +185,16 @@ export class MyDataPage {
     async validateDisabledBtnChangePhoto(){
         await expect(this.myDatLocator.btnModalChangePhoto).toBeDisabled();
         console.log("El boton de Cambiar Foto dentro del modal está deshabilitado")
+    }
+
+    async clickBtnModalChangePhoto(){
+        await this.myDatLocator.btnModalChangePhoto.isEnabled();
+        await this.myDatLocator.btnModalChangePhoto.click();
+    }
+
+    async clickBtnEnabledModalChangePhoto(){
+        await this.myDatLocator.btnModalChangePhotoEnabled.isEnabled();
+        await this.myDatLocator.btnModalChangePhotoEnabled.click();
     }
 
     async validatePersonalInformation(){
