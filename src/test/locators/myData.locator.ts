@@ -28,14 +28,29 @@ export class MyDataLocator {
         return this.page.locator("//label[contains(.,'Apellidos')]/div/span")
     }
 
+    get lblGender(){
+        return this.page.locator("//label[contains(.,'Género')]/div/span")
+    }
+
+    get imgPhoto(){
+        return this.page.locator('//img[@alt="Foto Perfil"]').nth(1);
+    }
+
     get inputPhone(){
         return this.page.locator('//input[@name="Celular"]');
+    }
+
+    get inputEmail(){  
+        return this.page.locator('//input[@name="Correo_Electronico"]');
     }
 
     get lblPhone(){
         return this.page.locator("//label[contains(.,'Celular')]/div/span")
     }
 
+    get lblEmail(){
+        return this.page.locator("//label[contains(.,'Correo Electronico')]/div/span")
+    }
 
     get inputDNI(){
         return this.page.locator('//input[@name="Identificador_Nacional"]');
@@ -74,6 +89,10 @@ export class MyDataLocator {
 
     get lblHeaderUser(){
         return this.page.locator("header h1.text-blanco");
+    }
+
+    get lblUser(){
+        return this.page.locator("//label[contains(.,'Nombre de Usuario')]/div/span");
     }
 
     

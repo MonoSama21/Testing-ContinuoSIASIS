@@ -11,7 +11,7 @@ Background:
     And accedo al sistema como "TUTOR"
 
 #AVER
-@Escenario13
+@Escenario133
 Scenario: Validar que el rol Tutor de Secundaria puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos

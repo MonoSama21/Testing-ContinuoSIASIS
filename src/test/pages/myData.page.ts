@@ -168,5 +168,31 @@ export class MyDataPage {
         console.log("El boton de Cambiar Foto dentro del modal está deshabilitado")
     }
 
+    async validatePersonalInformation(){
+        await this.myDatLocator.inputDNI.isVisible();
+        await this.myDatLocator.inputNames.isVisible();
+        await this.myDatLocator.inputLastNames.isVisible();
+        await this.myDatLocator.lblGender.isVisible();
+        await this.myDatLocator.imgPhoto.isVisible();
+        await this.myDatLocator.lblPhone.isVisible();
+        console.log("✔ Se validó que los campos DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico son visibles");
+    }
+
+    async validateContactInformation(){
+        await this.myDatLocator.lblPhone.isVisible();
+        await this.myDatLocator.lblEmail.isVisible();
+        console.log("✔ Se validó que los campos Celular y Correo Electrónico son visibles");
+    }
+
+    async validateUserInformation(){
+        await this.myDatLocator.lblUser.isVisible();
+        console.log("✔ Se validó que el campo Nombre de Usuario es visible");
+    }
+
+    async validateEditablePhoneAndEmail(){
+        await this.myDatLocator.inputPhone.isVisible();
+        await this.myDatLocator.inputEmail.isVisible();
+        console.log("✔ Se validó que los campos Celular y Correo Electrónico son editables");
+    }
 
 };

@@ -14,6 +14,20 @@ When('doy click en el boton de Editar Datos', async function () {
     await myDataPage.clickBtnEditDates();
 });
 
+When('solo se pueden editar los campos de celular y correo Electrónico', async function () {
+    await myDataPage.validateEditablePhoneAndEmail();
+});
+
+When('edito los campos disponibles', async function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+});
+
+Then('verifico que se han guardado los cambios asi como el mensaje de confirmacion', async function () {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+});
+
 When('edito mi informacion personal', async function () {
     await myDataPage.editDataInformationPersonal();
 });
@@ -51,4 +65,17 @@ Then('aparece un modal indicando que la imagen no debe superar los 5MB', async f
 
 Then('el boton del modal para cambiar foto debe permanecer desahabilitado', async function () {
     await myDataPage.validateDisabledBtnChangePhoto();
+});
+
+Then('se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto y Celular', async function () {
+    myDataPage = new MyDataPage(pageFixture.page);
+    await myDataPage.validatePersonalInformation();
+});
+
+Then('se muestra los datos de contacto como celular y correo Electrónico', async function () {
+    await myDataPage.validateContactInformation();
+});
+
+Then('se muestra la informacion de usuario como nombre de usuario', async function () {
+    await myDataPage.validateUserInformation();
 });

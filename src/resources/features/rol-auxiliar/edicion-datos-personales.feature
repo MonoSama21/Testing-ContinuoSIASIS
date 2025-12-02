@@ -10,14 +10,14 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "AUXILIAR"
 
-@Escenario13
+@Escenario134
 Scenario: Validar que el rol Auxiliar puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
-    And doy click en el boton de Editar Datos
-    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico
-    And también se muestra el nombre de usuario
+    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto y Celular
+    And se muestra los datos de contacto como celular y correo Electrónico
+    And se muestra la informacion de usuario como nombre de usuario
 
-@Escenario14
+@Escenario144
 Scenario: Validar que el rol Auxiliar puede editar su informacion personal
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos

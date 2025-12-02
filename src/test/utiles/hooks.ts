@@ -1,5 +1,5 @@
 import { Browser, BrowserContext, chromium } from "@playwright/test";
-import { Before, After, BeforeAll, AfterAll, setDefaultTimeout } from '@cucumber/cucumber';
+import { Before, After, BeforeAll, AfterAll, setDefaultTimeout, Status } from '@cucumber/cucumber';
 import { pageFixture } from "./pageFixture";
 
 let browser: Browser;
@@ -24,8 +24,18 @@ Before(async function () {
   });
 });
 
-// CIERRA TODO EL ESCENARIO (PÁGINA + CONTEXT)
-After(async function () {
+// CIERRA TODO EL ESCENARIO (PÁGINA + CONTEXT) Y TOMA SCREENSHOT SI FALLA
+After(async function (scenario) {
+  // Si el escenario falla, tomar captura de pantalla y adjuntarla al reporte
+  if (scenario.result?.status === Status.FAILED && pageFixture.page) {
+    const screenshot = await pageFixture.page.screenshot({
+      fullPage: true,
+      type: 'png'
+    });
+    this.attach(screenshot, 'image/png');
+    console.log(`📸 Captura tomada para el escenario fallido: ${scenario.pickle.name}`);
+  }
+
   if (pageFixture.page) {
     await pageFixture.page.close();
   }
