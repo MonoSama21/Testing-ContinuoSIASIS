@@ -24,24 +24,24 @@ export class CommunicationsLocator {
         return this.page.locator("//h1[text()='REGISTRAR COMUNICADOS']");
     }
 
-    get inputTitulo(){
+    get inputTitle(){
         return this.page.locator('input[type="text"]');
     }
 
-    get textareaContenido(){
+    get textareaContent(){
         return this.page.locator('textarea');
     }
 
-    get inputFileImagen(){
+    get inputFileImg(){
         return this.page.locator('input[type="file"]');
     }
 
     // Vista Previa
-    get vistaPreviaTitulo(){
+    get previewTitle(){
         return this.page.locator('div.relative.bg-white h4.text-xl');
     }
 
-    get vistaPreviaContenido(){
+    get previewContent(){
         return this.page.locator('div.text-sm.text-gray-700');
     }
 
@@ -50,12 +50,12 @@ export class CommunicationsLocator {
     }
 
     // Mensaje de éxito
-    get mensajeExito(){
+    get successMessage(){
         return this.page.locator('div.bg-green-100.border-green-400');
     }
 
     // Búsqueda y Tabla
-    get inputBusquedaTitulo(){
+    get inputSearchTitle(){
         return this.page.locator('input[type="text"].border-2.border-red-600');
     }
 
@@ -63,11 +63,11 @@ export class CommunicationsLocator {
         return this.page.locator('table tbody');
     }
 
-    getFilaComunicadoPorTitulo(titulo: string){
+    getStatementRowTitle(titulo: string){
         return this.page.locator(`tr:has-text("${titulo}")`);
     }
 
-    getEstadoComunicadoPorTitulo(titulo: string){
+    getStatementStatusTitle(titulo: string){
         return this.page.locator(`tr:has-text("${titulo}") span.inline-flex`);
     }
 }

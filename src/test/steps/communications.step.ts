@@ -14,12 +14,10 @@ Then('se muestra en pantalla la lista de auxiliares disponibles', async function
     
 });
 
-
 When('hago click en el boton {string}', async function (string) {
     communicationsPage = new CommunicationsPage(pageFixture.page);
     await communicationsPage.clickBtnRegisterCommunication();
 });
-
 
 When('completo los campos de fecha de inicio y fecha de conclusión con una fecha mayor a la actual', async function () {
     communicationsPage = new CommunicationsPage(pageFixture.page);
@@ -29,43 +27,32 @@ When('completo los campos de fecha de inicio y fecha de conclusión con una fech
 
 When('completo los campos de titulo y Contenido', async function () {
     communicationsPage = new CommunicationsPage(pageFixture.page);
-    const { titulo, contenido } = await communicationsPage.fillTituloYContenido();
+    const { titulo, contenido } = await communicationsPage.fillTitleAndContent();
     // Guardar en el contexto de Cucumber para validaciones posteriores
     this.comunicadoTitulo = titulo;
     this.comunicadoContenido = contenido;
 });
 
-
 When('adjunto una imagen al comunicado', async function () {
     communicationsPage = new CommunicationsPage(pageFixture.page);
-    await communicationsPage.uploadImagen();
+    await communicationsPage.uploadImg();
 });
-
-
-When('visualizo la vista previa del comunicado', function () {
-           // Write code here that turns the phrase above into concrete actions
-           return 'pending';
-});
-
 
 Then('la vista previa muestra correctamente el titulo, contenido y fecha', async function () {
     communicationsPage = new CommunicationsPage(pageFixture.page);
-    await communicationsPage.validateVistaPrevia(this.comunicadoTitulo, this.comunicadoContenido);
+    await communicationsPage.validatePreview(this.comunicadoTitulo, this.comunicadoContenido);
 });
 
 When('confirmo el registro del comunicado', async function () {
     await communicationsPage.clickBtnRegisterCommunication();
 });
 
-
 Then('el sistema muestra un mensaje de exito {string}', async function (mensajeEsperado: string) {
     communicationsPage = new CommunicationsPage(pageFixture.page);
-    await communicationsPage.validateMensajeExito(mensajeEsperado);
+    await communicationsPage.validateSuccessMessage(mensajeEsperado);
 });
 
-
 Then('el comunicado aparece en la lista con estado {string}', async function (estadoEsperado: string) {
-
     communicationsPage = new CommunicationsPage(pageFixture.page);
-    await communicationsPage.buscarYValidarComunicadoEnLista(this.comunicadoTitulo, estadoEsperado);
+    await communicationsPage.searchAndValidateStatement(this.comunicadoTitulo, estadoEsperado);
 });
