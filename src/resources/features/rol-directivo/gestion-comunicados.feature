@@ -16,9 +16,9 @@ Scenario: Registrar un comunicado exitosamente con todos los campos completos
     And completo los campos de fecha de inicio y fecha de conclusión con una fecha mayor a la actual
     And completo los campos de titulo y Contenido                            
     And adjunto una imagen al comunicado
-    And visualizo la vista previa del comunicado
     Then la vista previa muestra correctamente el titulo, contenido y fecha
     When confirmo el registro del comunicado
+    And hago click en el apartado de "Comunicados"
     Then el sistema muestra un mensaje de exito "¡Comunicado Registrado!"
     And el comunicado aparece en la lista con estado "Pendiente"
 
