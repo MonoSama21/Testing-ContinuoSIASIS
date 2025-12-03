@@ -1,25 +1,25 @@
 @test @DailyTest @HU-2
-Feature: Edicion de Datos Personales por Rol Profesor de Secundaria
-    Como profesor de Secundaria del colegio
+Feature: Edicion de Datos Personales por Rol Otro (Personal Administrativo)
+    Como personal administrativo del colegio
     Quiero poder visualizar y editar mis datos personales según sea necesario
     Para mantener mi información actualizada en el sistema y facilitar la comunicación con la comunidad educativa
 
 Background: 
     Given estoy en la pagina de login 
-    And selecciono el rol "PROFESOR_SECUNDARIA"
+    And selecciono el rol "OTRO"
     And ingreso mi nombre de usuario y contraseña validos
-    And accedo al sistema como "PROFESOR_SECUNDARIA"
+    And accedo al sistema como "OTRO"
 
-@Escenario27
-Scenario: ES-027 Validar que el rol Profesor de Secundaria puede visualizar los campos en Editar Perfil
+
+@Escenario37
+Scenario: ES-037 Validar que el rol Otro (Personal Administrativo) puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
     Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico
-    And se muestra los datos del aula asignada 
     And también se muestra el nombre de usuario
 
-@Escenario28
-Scenario: ES-028 Validar que el rol Profesor de Secundaria puede editar el campo Celular
+@Escenario38
+Scenario: ES-038 Validar que el rol Otro (Personal Administrativo) puede editar el campo Celular
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
     And solo se pueden editar los campos de celular y correo Electrónico
@@ -29,11 +29,23 @@ Scenario: ES-028 Validar que el rol Profesor de Secundaria puede editar el campo
     #And restauro los datos originales
     #Then verifico que los datos originales son correctos
 
-@Escenario29
-Scenario: ES-029 Validar que el rol Profesor de Secundaria puede editar la Contraseña
+@Escenario39
+Scenario: ES-039 Validar que el rol Otro (Personal Administrativo) puede editar el campo Correo electrónico
+    When en la barra de navegacion selecciono el apartado de Editar Perfil
+    And doy click en el boton de Editar Datos
+    And solo se pueden editar los campos de celular y correo Electrónico
+    And edito el campo de correo Electrónico
+    And me pide una verificación adicional
+    And guardo los cambios realizados
+    Then verifico que se han guardado los cambios asi como el mensaje de confirmacion
+    #And restauro los datos originales
+    #Then verifico que los datos originales son correctos
 
-@Escenario30
-Scenario: ES-030 Validar que el rol Profesor de Secundaria puede editar su foto de perfil con foto de peso admitible 
+@Escenario40
+Scenario: ES-040 Validar que el rol Otro (Personal Administrativo) puede editar la Contraseña
+
+@Escenario41
+Scenario: ES-041 Validar que el rol Otro (Personal Administrativo) puede editar su foto de perfil con foto de peso admitible 
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
     And hago click en Cambiar Foto
@@ -42,8 +54,8 @@ Scenario: ES-030 Validar que el rol Profesor de Secundaria puede editar su foto 
     #ACA HAY BUG PORQUE SOLO ACTUALIZA EN EL MODAL PERO NO EN EL HEADER
     Then se valida el cambio correctamente tanto en el modal como en el header
 
-@Escenario31
-Scenario: ES-031 Validar que el rol Profesor de Secundaria NO puede editar su foto de perfil con foto de peso no admitible (mayor a 5MB)
+@Escenario42
+Scenario: ES-042 Validar que el rol Otro (Personal Administrativo) NO puede editar su foto de perfil con foto de peso no admitible (mayor a 5MB)
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
     And hago click en Cambiar Foto
