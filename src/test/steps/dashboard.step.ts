@@ -45,3 +45,52 @@ Then('aparece un texto que indica el dia no laboral en el que estamos', async fu
     await dashboardPage.validateNonWorkingDayMessage(diaActual);
     console.log("✅ Validado correctamente el día en pantalla:", diaActual);
 });
+
+
+
+
+When('pongo mi dispositivo como un celular', async function () {
+    // Configurar viewport de móvil
+    await pageFixture.page.setViewportSize({
+        width: 430,
+        height: 800
+    });
+    
+    // Inyectar JavaScript para modificar las propiedades de detección móvil
+    await pageFixture.page.addInitScript(() => {
+        // Modificar navigator para simular móvil
+        Object.defineProperty(navigator, 'userAgent', {
+            get: () => 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1'
+        });
+        
+        Object.defineProperty(navigator, 'platform', {
+            get: () => 'iPhone'
+        });
+        
+        Object.defineProperty(navigator, 'maxTouchPoints', {
+            get: () => 5
+        });
+        
+        // Simular que hay soporte táctil
+        (window as any).ontouchstart = () => {};
+    });
+    
+    // Configurar User Agent en headers HTTP también
+    await pageFixture.page.setExtraHTTPHeaders({
+        'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1'
+    });
+    
+    // Recargar la página para aplicar todos los cambios
+    await pageFixture.page.reload();
+    
+    console.log("📱 Viewport: 430x800");
+    console.log("📱 User Agent: iPhone");
+    console.log("📱 Touch support: Habilitado");
+    console.log("📱 Navigator properties: Modificadas");
+    await pageFixture.page.pause();
+});
+
+
+When('doy click en el boton de Registrar Asistencia', async function () {
+    console.log("🔘 Intentando registrar asistencia...");
+});

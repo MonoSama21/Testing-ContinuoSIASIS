@@ -10,7 +10,7 @@ let selectedRole = '';
 
 
 Given('estoy en la pagina de login', async function () {
-    await pageFixture.page.goto("https://siasis-cert-ins3.vercel.app/login")
+    await pageFixture.page.goto("https://siasis-cert.vercel.app/login")
 });
 
 When('selecciono el rol {string}', async function (role) {

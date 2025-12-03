@@ -9,7 +9,7 @@ setDefaultTimeout(30 * 1000);
 
 BeforeAll(async function () {
   browser = await chromium.launch({
-    headless: false, // IMPORTANTE para GitHub Actions
+    headless: true, // IMPORTANTE para GitHub Actions
   });
 });
 
