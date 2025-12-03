@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js src/resources/features --format json:target/cucumber-report.json",
-    "report": "node -e \"const reporter = require('cucumber-html-reporter'); reporter.generate({theme: 'bootstrap', jsonFile: 'target/cucumber-report.json', output: 'target/cucumber-report.html', reportSuiteAsScenarios: true, launchReport: false});\""
+    "report": "node -e \"const reporter = require('cucumber-html-reporter'); reporter.generate({theme: 'hierarchy', jsonFile: 'target/cucumber-report.json', output: 'target/cucumber-report.html', reportSuiteAsScenarios: true, scenarioTimestamp: true, metadata: {Browser: 'Chrome', Platform: 'Windows 11', 'Test Environment': 'DEV', 'App Version': '1.0.0', 'Executed by': 'QA Automation SSr Yrvin Pachas'}, brandTitle: 'SIASIS - Testing Continuo', name: 'Reporte de Pruebas Automatizadas', launchReport: false, storeScreenshots: false, noInlineScreenshots: false});\""
   },
   "keywords": [],
   "author": "",
