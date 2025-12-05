@@ -10,6 +10,7 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "RESPONSABLE"
 
+
 @Escenario32
 Scenario: ES-032 Validar que el rol Responsable puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
