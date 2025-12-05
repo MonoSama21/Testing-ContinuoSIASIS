@@ -6,10 +6,16 @@ const htmlContent = fs.readFileSync('target/cucumber-report.html', 'utf-8');
 const dom = new JSDOM(htmlContent);
 const document = dom.window.document;
 
-// Obtener todos los enlaces de escenarios (que contienen los datos)
-const scenarioLinks = document.querySelectorAll('a[data-toggle="collapse"]');
+// Obtener solo los escenarios principales (no los steps individuales)
+// Los escenarios tienen un <b>Scenario:</b> dentro del enlace
+const allLinks = document.querySelectorAll('a[data-toggle="collapse"]');
+const scenarioLinks = Array.from(allLinks).filter(link => {
+  const boldText = link.querySelector('b');
+  return boldText && boldText.textContent.includes('Scenario');
+});
 
-console.log(`📊 Encontrados ${scenarioLinks.length} escenarios en el reporte`);
+console.log(`📊 Total de enlaces encontrados: ${allLinks.length}`);
+console.log(`📊 Escenarios principales filtrados: ${scenarioLinks.length}`);
 
 let tableRows = '';
 let totalPassed = 0;
@@ -117,9 +123,8 @@ let markdownTable = `## 📊 Resultados de Ejecución
 |----------------|--------|
 `;
 
-// Recrear las filas en formato Markdown
-const scenarioLinksAgain = document.querySelectorAll('a[data-toggle="collapse"]');
-scenarioLinksAgain.forEach(link => {
+// Recrear las filas en formato Markdown (usar los mismos escenarios filtrados)
+scenarioLinks.forEach(link => {
   const nameElement = link.querySelector('.ellipsis');
   const scenarioName = nameElement ? nameElement.getAttribute('data-text') || nameElement.textContent.trim() : 'N/A';
   
