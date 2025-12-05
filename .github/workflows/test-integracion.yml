@@ -112,6 +112,29 @@ jobs:
       run: |
         mkdir -p gh-pages
         cp target/cucumber-report.html gh-pages/index.html 2>/dev/null || echo "No se encontró el reporte HTML"
+    
+    # =========================================================
+    # 📊 EXTRAER RESULTADOS DEL REPORTE HTML PARA EMAIL
+    # =========================================================
+    - name: Instalar jsdom para parsear HTML
+      if: always()
+      run: npm install jsdom
+      
+    - name: Extraer tabla de resultados del reporte
+      if: always()
+      run: node .github/scripts/extract-test-results.js
+      
+    - name: Leer tabla de resultados
+      if: always()
+      id: test_results
+      run: |
+        if [ -f test-results-table.html ]; then
+          echo "table_html<<EOF" >> $GITHUB_OUTPUT
+          cat test-results-table.html >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        else
+          echo "table_html=<p>No se pudo generar la tabla de resultados</p>" >> $GITHUB_OUTPUT
+        fi
         
     - name: Deploy to GitHub Pages
       if: always()
@@ -123,9 +146,9 @@ jobs:
         force_orphan: true
 
     # =========================================================
-    # 📧 CORREO FINAL CON LINK AL REPORTE EN GITHUB PAGES
+    # 📧 CORREO FINAL CON TABLA DE RESULTADOS Y LINK
     # =========================================================
-    - name: Notificar fin de ejecución con link a GitHub Pages
+    - name: Notificar fin de ejecución con tabla de resultados
       if: always()
       uses: dawidd6/action-send-mail@v3
       with:
@@ -146,13 +169,15 @@ jobs:
               <span style="color:#28a745;">${{ steps.params.outputs.tag }}</span>
             </p>
 
-            <h3 style="color:#333;">📊 Resultado:</h3>
+            <h3 style="color:#333;">📊 Resultado General:</h3>
             <p>
               Estado: 
               <strong style="color:${{ steps.run_tests.outputs.resultado == '0' && 'green' || 'red' }};">
                 ${{ steps.run_tests.outputs.resultado == '0' && 'PASSED' || 'FAILED' }}
               </strong>
             </p>
+
+            ${{ steps.test_results.outputs.table_html }}
 
             <h3>📄 Reporte en vivo:</h3>
             <p>
