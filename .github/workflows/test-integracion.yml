@@ -100,20 +100,28 @@ jobs:
         path: target/
         retention-days: 30
 
-    # Comprimir reporte LIGERO (sin videos) para envío por correo
-    - name: Comprimir reporte para correo (sin videos)
+    # =========================================================
+    # 🌐 DESPLEGAR REPORTE EN GITHUB PAGES
+    # =========================================================
+    - name: Preparar reporte para GitHub Pages
       if: always()
       run: |
-        mkdir -p reporte-email
-        cp target/cucumber-report.html reporte-email/ 2>/dev/null || true
-        cp target/cucumber-report.json reporte-email/ 2>/dev/null || true
-        zip -r reporte.zip reporte-email/
-        ls -lh reporte.zip
+        mkdir -p gh-pages
+        cp target/cucumber-report.html gh-pages/index.html 2>/dev/null || echo "No se encontró el reporte HTML"
+        
+    - name: Deploy to GitHub Pages
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./gh-pages
+        publish_branch: gh-pages
+        force_orphan: true
 
     # =========================================================
-    # CORREO FINAL CON REPORTE HTML + ZIP
+    # 📧 CORREO FINAL CON LINK AL REPORTE EN GITHUB PAGES
     # =========================================================
-    - name: Notificar fin de ejecución y adjuntar reporte
+    - name: Notificar fin de ejecución con link a GitHub Pages
       if: always()
       uses: dawidd6/action-send-mail@v3
       with:
@@ -142,15 +150,22 @@ jobs:
               </strong>
             </p>
 
-            <h3>📄 Reporte:</h3>
-            <p>Se adjunta el reporte comprimido y también puedes verlo como artefacto en GitHub Actions.</p>
+            <h3>📄 Reporte en vivo:</h3>
+            <p>
+              🌐 <a href="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" 
+              style="color:#007bff; font-size: 18px; font-weight: bold;">Ver Reporte HTML Completo</a>
+            </p>
 
             <p>
               🔗 <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" 
-              style="color:#007bff;">Ver ejecución completa en GitHub Actions</a>
+              style="color:#007bff;">Ver ejecución en GitHub Actions</a>
+            </p>
+            
+            <p>
+              📦 <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" 
+              style="color:#007bff;">Descargar artefactos (con videos)</a>
             </p>
 
             <br>
             <p>Saludos,<br><strong>QA Automation Semisenior Yrvin Pachas</strong></p>
           </div>
-        attachments: reporte.zip
