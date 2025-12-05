@@ -118,4 +118,27 @@ export class MyDataLocator {
         return this.page.locator("//label[contains(.,'Sección')]/div/span");
     }
 
+    get iconPasswordChange(){
+        return this.page.locator('.cursor-pointer.flex').first()
+    }
+
+    get inputCurrentPassword(){
+        return this.page.locator('#contraseñaActual');
+    }
+
+    get inputNewPassword(){
+        return this.page.locator('#nuevaContraseña');
+    }
+
+    get btnChangePassword(){
+        return this.page.getByRole('button', { name: 'Cambiar Contraseña' });
+    }
+
+    get modalPasswordChangeSuccess(){
+        return this.page.locator('div.bg-verde-principal:has(svg path[d*="M5 13l4 4L19 7"])');
+    }
+
+    get modalPasswordChangeSuccessText(){
+        return this.page.locator('p:has-text("Se actualizo la contraseña correctamente")');
+    }
 }

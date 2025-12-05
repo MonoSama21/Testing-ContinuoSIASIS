@@ -22,11 +22,12 @@ When('selecciono el rol {string}', async function (role) {
 When('ingreso mi nombre de usuario y contraseña validos', async function () {
     await loginPage.validateImgLogoIsVisible();
     await loginPage.fillCredentials(selectedRole);
+
 });
 
 Then('accedo al sistema como {string}', async function (string) {
     await loginPage.validateLoginSuccess();
-    console.log(`Ingreso exitoso como ${string}`);
+    console.log(`Ingreso exitoso como ${string}`);    
 });
 
 When('ingreso mi nombre de usuario y contraseña invalidos', async function () {

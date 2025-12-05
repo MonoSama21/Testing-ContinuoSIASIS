@@ -92,6 +92,7 @@ jobs:
     - name: List target directory
       run: ls -R target
 
+    # Subir artefacto completo (con videos) a GitHub Actions
     - uses: actions/upload-artifact@v4
       if: always()
       with:
@@ -99,10 +100,15 @@ jobs:
         path: target/
         retention-days: 30
 
-    # Comprimir reporte
-    - name: Comprimir reporte
+    # Comprimir reporte LIGERO (sin videos) para envío por correo
+    - name: Comprimir reporte para correo (sin videos)
       if: always()
-      run: zip -r reporte.zip target/
+      run: |
+        mkdir -p reporte-email
+        cp target/cucumber-report.html reporte-email/ 2>/dev/null || true
+        cp target/cucumber-report.json reporte-email/ 2>/dev/null || true
+        zip -r reporte.zip reporte-email/
+        ls -lh reporte.zip
 
     # =========================================================
     # CORREO FINAL CON REPORTE HTML + ZIP

@@ -1,4 +1,4 @@
-@test @login-unhappy-path @DailyTest
+@test @login-unhappy-path @DailyTest @HU-1
 Feature: Inicio de sesión exitoso en el sistema SIASIS
     Como usuario del sistema SIASIS
     Quiero poder validar que no se puede iniciar sesión con diferentes roles y credenciales inválidas
@@ -8,7 +8,7 @@ Background:
     Given estoy en la pagina de login 
 
 @Escenario02
-Scenario Outline: Validar que no se puede realizar un inicio de sesion exitoso con credenciales invalidas y <rol>
+Scenario Outline: ES-002 Validar que no se puede realizar un inicio de sesion exitoso con credenciales invalidas en el rol <rol>
     When selecciono el rol "<rol>"
     And ingreso mi nombre de usuario y contraseña invalidos
     Then aparece un modal indicando que las credenciales son incorrectas
@@ -21,3 +21,4 @@ Scenario Outline: Validar que no se puede realizar un inicio de sesion exitoso c
         | AUXILIAR                |
         | TUTOR                   |
         | OTRO                    |
+        | RESPONSABLE             |

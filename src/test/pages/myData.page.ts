@@ -27,6 +27,7 @@ export class MyDataPage {
     generatedLastName: string = "";
     firstGeneratedName: string = "";
     firstGeneratedLastName: string = "";
+    generatedNewPassword: string = "";
 
 
 
@@ -39,7 +40,16 @@ export class MyDataPage {
         await this.myDatLocator.btnEditDates.click();
         console.log("✅ Se hizo click en Editar Datos");
     }
+
+    async validateEditablePhone(){
+        await this.myDatLocator.inputPhone.isVisible();
+        console.log("✔ Se validó que el campo Celular es editable");
+    }
     
+    async validateEditableEmail(){
+        await this.myDatLocator.iconPasswordChange.isVisible();
+    }
+
     async editDataName() {
         const fullName = faker.person.firstName() + " " + faker.person.middleName();
         this.generatedName = fullName;
@@ -253,4 +263,118 @@ export class MyDataPage {
         console.log("✔ Se validó que el campo Sección Asignada es visible y contiene:", section?.trim());
     }
 
-};
+    async clickIconChangePassword(){
+        await this.myDatLocator.iconPasswordChange.click();
+        console.log("✅ Se hizo click en el icono de cambio de contraseña");
+    }
+
+    async fillCurrentPassword(role: string){
+        let currentPassword = '';
+        switch (role) {
+            case 'DIRECTIVO':
+                currentPassword = process.env.DIRECTIVO_PASSWORD || '';
+                break;
+            case 'PROFESOR_PRIMARIA':
+                currentPassword = process.env.PROFESOR_PRIMARIA_PASSWORD || '';
+                break;
+            case 'PROFESOR_SECUNDARIA':
+                currentPassword = process.env.PROFESOR_SECUNDARIA_PASSWORD || '';
+                break;
+            case 'AUXILIAR':
+                currentPassword = process.env.AUXILIAR_PASSWORD || '';
+                break;
+            case 'RESPONSABLE':
+                currentPassword = process.env.RESPONSABLE_PASSWORD || '';
+                break;
+            case 'TUTOR':
+                currentPassword = process.env.TUTOR_PASSWORD || '';
+                break;
+            case 'OTRO':
+                currentPassword = process.env.OTRO_PASSWORD || '';
+                break;
+            default:
+                console.log('Rol no reconocido');
+                return;
+        }
+
+        await this.myDatLocator.inputCurrentPassword.fill(currentPassword);
+        console.log("✅ Se ingresó la contraseña actual");
+    }
+
+    async fillNewPassword(){
+        const randomNumber = faker.number.int({ min: 1, max: 9 });
+        const restOfPassword = faker.string.alphanumeric(9);
+        const newPassword = randomNumber + restOfPassword;
+        
+        this.generatedNewPassword = newPassword; // Guardar para restaurar después
+        await this.myDatLocator.inputNewPassword.fill(newPassword);
+        console.log("✅ Se ingresó la nueva contraseña:", newPassword);
+        console.log("💾 Contraseña guardada para restauración posterior");
+    };
+
+    async clickBtnChangePassword(){
+        await this.myDatLocator.btnChangePassword.click();
+        console.log("✅ Se hizo click en el botón Cambiar Contraseña");
+    }
+
+    async validatePasswordChangeSuccess(){
+        // Esperar a que aparezca el modal de éxito
+        await this.myDatLocator.modalPasswordChangeSuccessText.waitFor({ state: 'visible', timeout: 10000 });
+        
+        // Validar que contiene el texto esperado
+        await expect(this.myDatLocator.modalPasswordChangeSuccessText).toContainText('Se actualizo la contraseña correctamente');
+        
+        console.log("✅ Modal de éxito validado: Contraseña actualizada correctamente");
+    }
+
+    async restoreOriginalPassword(role: string){
+        // Hacer click en el icono de cambio de contraseña nuevamente
+        await this.clickIconChangePassword();
+        
+        // Usar la contraseña generada como contraseña actual
+        await this.myDatLocator.inputCurrentPassword.fill(this.generatedNewPassword);
+        console.log("🔑 Contraseña actual (generada previamente):", this.generatedNewPassword);
+        
+        // Restaurar a la contraseña original del usuario
+        let originalPassword = '';
+        switch (role) {
+            case 'DIRECTIVO':
+                originalPassword = process.env.DIRECTIVO_PASSWORD || '';
+                break;
+            case 'PROFESOR_PRIMARIA':
+                originalPassword = process.env.PROFESOR_PRIMARIA_PASSWORD || '';
+                break;
+            case 'PROFESOR_SECUNDARIA':
+                originalPassword = process.env.PROFESOR_SECUNDARIA_PASSWORD || '';
+                break;
+            case 'AUXILIAR':
+                originalPassword = process.env.AUXILIAR_PASSWORD || '';
+                break;
+            case 'RESPONSABLE':
+                originalPassword = process.env.RESPONSABLE_PASSWORD || '';
+                break;
+            case 'TUTOR':
+                originalPassword = process.env.TUTOR_PASSWORD || '';
+                break;
+            case 'OTRO':
+                originalPassword = process.env.OTRO_PASSWORD || '';
+                break;
+            default:
+                console.log('Rol no reconocido');
+                return;
+        }
+        await this.myDatLocator.inputNewPassword.fill(originalPassword);
+        console.log("🔑 Nueva contraseña (original):", originalPassword);
+        
+        // Hacer click en cambiar contraseña
+        await this.clickBtnChangePassword();
+        
+        await this.page.waitForTimeout(6000);
+        // Validar que se cambió correctamente
+        await this.validatePasswordChangeSuccess();
+        
+        console.log("✅ Contraseña restaurada a la original correctamente");
+    }
+
+
+}

@@ -4,15 +4,10 @@ import { pageFixture } from '../utiles/pageFixture';
 import { CommunicationsPage } from '../pages/communications.page';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: 'playwright.env' });
-import { DashboardPage } from '../pages/dashboard.page';
+
 
 let communicationsPage: CommunicationsPage;
-let dashboardPage: DashboardPage;
 
-Then('se muestra en pantalla la lista de auxiliares disponibles', async function () {
-    communicationsPage = new CommunicationsPage(pageFixture.page);
-    
-});
 
 When('hago click en el boton {string}', async function (string) {
     communicationsPage = new CommunicationsPage(pageFixture.page);

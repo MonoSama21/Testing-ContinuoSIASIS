@@ -10,7 +10,7 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "DIRECTIVO"
 
-@Escenario03
+@Escenario
 Scenario: Validar que el rol DIRECTIVO puede consultar los auxiliares
     When hago click en el apartado de "Auxiliares"
     Then se muestra en pantalla la lista de auxiliares disponibles

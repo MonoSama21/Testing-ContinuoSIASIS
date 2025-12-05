@@ -1,4 +1,4 @@
-@test @login-happy-path @DailyTest
+@test @login-happy-path @DailyTest @HU-1
 Feature: Inicio de sesión exitoso en el sistema SIASIS
     Como usuario del sistema SIASIS
     Quiero poder iniciar sesión con diferentes roles
@@ -8,7 +8,7 @@ Background:
     Given estoy en la pagina de login 
 
 @Escenario01
-Scenario Outline: Validar que se puede realizar un inicio de sesion exitoso con el rol <rol>
+Scenario Outline: ES-001 Validar que se puede realizar un inicio de sesión exitoso con el rol <rol>
     When selecciono el rol "<rol>"
     And ingreso mi nombre de usuario y contraseña validos
     Then accedo al sistema como "<rol>" 
@@ -21,3 +21,4 @@ Scenario Outline: Validar que se puede realizar un inicio de sesion exitoso con 
         | AUXILIAR                |
         | TUTOR                   |
         | OTRO                    |
+        | RESPONSABLE             |

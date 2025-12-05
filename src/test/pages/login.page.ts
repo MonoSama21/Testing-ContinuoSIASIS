@@ -152,7 +152,9 @@ export class LoginPage {
                 await this.loginLocator.optionOther.click();
                 console.log("Seleccionado Otro");
                 break;
-
+            case 'RESPONSABLE':
+                await this.loginLocator.optionResponsible.click();
+                console.log("Seleccionado Responsable");
             default:
                 console.log("Opción no válida");
                 break;
@@ -162,7 +164,10 @@ export class LoginPage {
 
     async validateLoginSuccess() {
         await this.page.waitForLoadState('networkidle');
-        await this.loginLocator.messageWelcomeLogin.isVisible(); 
+        await this.page.waitForTimeout(3000);
+        await this.loginLocator.messageWelcomeLogin.isVisible();
+        await this.loginLocator.imgLogoUNDC.isVisible();
+        console.log("Ingreso exitoso al sistema");
     }
 
     async validateModalLoginOptionsRoleIsVisible(){

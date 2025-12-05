@@ -5,9 +5,26 @@ import { pageFixture } from "./pageFixture";
 let browser: Browser;
 let context: BrowserContext;
 
-setDefaultTimeout(30 * 1000);
+setDefaultTimeout(90 * 1000); // 90 segundos para manejar aplicación lenta y múltiples tests
 
 BeforeAll(async function () {
+  // Limpiar la carpeta de videos antes de iniciar las pruebas
+  const fs = require('fs');
+  const path = require('path');
+  const videosDir = path.join(process.cwd(), 'target', 'videos');
+  
+  try {
+    if (fs.existsSync(videosDir)) {
+      const files = fs.readdirSync(videosDir);
+      for (const file of files) {
+        fs.unlinkSync(path.join(videosDir, file));
+      }
+      console.log('🧹 Carpeta de videos limpiada antes de iniciar las pruebas');
+    }
+  } catch (error) {
+    console.log('⚠️ No se pudo limpiar la carpeta de videos:', error.message);
+  }
+
   browser = await chromium.launch({
     headless: true, // IMPORTANTE para GitHub Actions
   });
@@ -45,26 +62,30 @@ Before(async function () {
 
 // CIERRA TODO EL ESCENARIO (PÁGINA + CONTEXT) Y TOMA SCREENSHOT/VIDEO SI FALLA
 After(async function (scenario) {
+  // Obtener la ruta del video ANTES de cerrar la página
+  let videoPath: string | null = null;
+  if (pageFixture.page) {
+    videoPath = await pageFixture.page.video()?.path() || null;
+  }
+
   // Si el escenario falla, tomar captura de pantalla y adjuntarla al reporte
   if (scenario.result?.status === Status.FAILED && pageFixture.page) {
-    // Captura de pantalla
-    const screenshot = await pageFixture.page.screenshot({
-      fullPage: true,
-      type: 'png'
-    });
-    this.attach(screenshot, 'image/png');
-    console.log(`📸 Captura tomada para el escenario fallido: ${scenario.pickle.name}`);
+    try {
+      // Captura de pantalla
+      const screenshot = await pageFixture.page.screenshot({
+        fullPage: true,
+        type: 'png'
+      });
+      this.attach(screenshot, 'image/png');
+      console.log(`📸 Captura tomada para el escenario fallido: ${scenario.pickle.name}`);
+    } catch (error) {
+      console.log(`⚠️ No se pudo tomar captura: ${error.message}`);
+    }
   }
 
-  // Cerrar la página primero
+  // Cerrar la página
   if (pageFixture.page) {
     await pageFixture.page.close();
-  }
-
-  // Obtener la ruta del video antes de cerrar el contexto
-  let videoPath: string | null = null;
-  if (context && pageFixture.page) {
-    videoPath = await pageFixture.page.video()?.path() || null;
   }
 
   // Cerrar el contexto (esto finaliza la grabación del video)

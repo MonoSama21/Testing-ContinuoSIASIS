@@ -52,6 +52,10 @@ export class LoginLocator {
         return this.page.locator("#header");
     }
 
+    get imgLogoUNDC(){
+        return this.page.locator('//img[@alt="Logo UNDC"]');
+    }
+
     get modalInvalidCredentials(){
         return this.page.locator('//div[@role="alert"]');
     }
