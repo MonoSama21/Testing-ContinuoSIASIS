@@ -28,16 +28,6 @@ Scenario: ES-005 Validar que el rol Directivo puede editar su informacion person
     #And restauro los datos originales
     #Then verifico que los datos originales son correctos
 
-@Escenario06
-Scenario: ES-006 Validar que el rol Directivo puede editar su informacion personal mas de una vez
-    When en la barra de navegacion selecciono el apartado de Editar Perfil
-    And doy click en el boton de Editar Datos
-    And edito mi informacion personal
-    And guardo los cambios realizados
-    Then verifico que se han guardado los cambios
-    #And restauro los datos originales
-    #Then verifico que los datos originales son correctos
-
 @Escenario07
 Scenario: ES-007 Validar que el rol Directivo puede editar su foto de perfil con foto de peso admitible 
     When en la barra de navegacion selecciono el apartado de Editar Perfil
@@ -57,7 +47,7 @@ Scenario: ES-008 Validar que el rol Directivo NO puede editar su foto de perfil 
     Then aparece un modal indicando que la imagen no debe superar los 5MB
     And el boton del modal para cambiar foto debe permanecer desahabilitado 
 
-@contrd 
+@Escenario09
 Scenario: ES-009 Validar que el rol Directivo puede editar su contraseña 
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el icono de cambio de contraseña

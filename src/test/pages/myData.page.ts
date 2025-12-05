@@ -302,7 +302,10 @@ export class MyDataPage {
     }
 
     async fillNewPassword(){
-        const newPassword = faker.internet.password();
+        const randomNumber = faker.number.int({ min: 1, max: 9 });
+        const restOfPassword = faker.string.alphanumeric(9);
+        const newPassword = randomNumber + restOfPassword;
+        
         this.generatedNewPassword = newPassword; // Guardar para restaurar después
         await this.myDatLocator.inputNewPassword.fill(newPassword);
         console.log("✅ Se ingresó la nueva contraseña:", newPassword);

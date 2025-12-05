@@ -87,7 +87,6 @@ When('pongo mi dispositivo como un celular', async function () {
     console.log("📱 User Agent: iPhone");
     console.log("📱 Touch support: Habilitado");
     console.log("📱 Navigator properties: Modificadas");
-    await pageFixture.page.pause();
 });
 
 

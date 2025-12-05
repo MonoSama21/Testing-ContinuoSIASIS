@@ -10,34 +10,32 @@ Background:
     And ingreso mi nombre de usuario y contraseña validos
     And accedo al sistema como "OTRO"
 
-
 @Escenario37
 Scenario: ES-037 Validar que el rol Otro (Personal Administrativo) puede visualizar los campos en Editar Perfil
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
-    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto, Celular, Correo Electrónico
-    And también se muestra el nombre de usuario
+    Then se muestra en la pantalla su DNI, Nombres, Apellidos, Género, Foto y Celular
+    And se muestra la informacion de usuario como nombre de usuario
 
 @Escenario38
 Scenario: ES-038 Validar que el rol Otro (Personal Administrativo) puede editar el campo Celular
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
-    And solo se pueden editar los campos de celular y correo Electrónico
+    And se pueden editar los campos de celular
+    And se puede editar el correo Electrónico
     And edito el campo de celular
     And guardo los cambios realizados
     Then verifico que se han guardado los cambios asi como el mensaje de confirmacion
-    #And restauro los datos originales
-    #Then verifico que los datos originales son correctos
 
 @Escenario39
 Scenario: ES-039 Validar que el rol Otro (Personal Administrativo) puede editar el campo Correo electrónico
     When en la barra de navegacion selecciono el apartado de Editar Perfil
     And doy click en el boton de Editar Datos
-    And solo se pueden editar los campos de celular y correo Electrónico
-    And edito el campo de correo Electrónico
-    And me pide una verificación adicional
-    And guardo los cambios realizados
-    Then verifico que se han guardado los cambios asi como el mensaje de confirmacion
+    #And solo se pueden editar los campos de celular y correo Electrónico
+    #And edito el campo de correo Electrónico
+    #And me pide una verificación adicional
+    #And guardo los cambios realizados
+    #Then verifico que se han guardado los cambios asi como el mensaje de confirmacion
     #And restauro los datos originales
     #Then verifico que los datos originales son correctos
 

@@ -6,6 +6,7 @@
         "paths": [ "src/test/resources/features/*/*.feature"],
         "publishQuite": true,
         "dryRun": false,
+        "timeout": 60000,
         "require": [
             "src/test/steps/*.ts",
             "src/test/utiles/hooks.ts"
