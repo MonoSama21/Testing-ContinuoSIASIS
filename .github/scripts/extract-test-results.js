@@ -6,23 +6,27 @@ const htmlContent = fs.readFileSync('target/cucumber-report.html', 'utf-8');
 const dom = new JSDOM(htmlContent);
 const document = dom.window.document;
 
-// Obtener todos los escenarios
-const scenarios = document.querySelectorAll('.scenario');
+// Obtener todos los enlaces de escenarios (que contienen los datos)
+const scenarioLinks = document.querySelectorAll('a[data-toggle="collapse"]');
+
+console.log(`📊 Encontrados ${scenarioLinks.length} escenarios en el reporte`);
 
 let tableRows = '';
 let totalPassed = 0;
 let totalFailed = 0;
 let totalPending = 0;
 
-scenarios.forEach(scenario => {
+scenarioLinks.forEach((link, index) => {
   // Obtener el nombre del escenario desde el div con clase "ellipsis"
-  const nameElement = scenario.querySelector('.ellipsis');
-  const scenarioName = nameElement ? nameElement.textContent.trim() : 'N/A';
+  const nameElement = link.querySelector('.ellipsis');
+  const scenarioName = nameElement ? nameElement.getAttribute('data-text') || nameElement.textContent.trim() : 'N/A';
   
-  // Obtener los labels de estado (success, danger, warning)
-  const successLabel = scenario.querySelector('.label-success');
-  const dangerLabel = scenario.querySelector('.label-danger');
-  const warningLabel = scenario.querySelector('.label-warning');
+  console.log(`  [${index + 1}] Procesando: ${scenarioName}`);
+  
+  // Obtener los labels de estado (success, danger, warning) dentro del link
+  const successLabel = link.querySelector('.label-success');
+  const dangerLabel = link.querySelector('.label-danger');
+  const warningLabel = link.querySelector('.label-warning');
   
   // Determinar el estado del escenario
   let status = '';
@@ -95,10 +99,59 @@ const tableHtml = `
 </div>
 `;
 
-// Guardar el resultado en un archivo
+// Guardar la tabla HTML para el correo
 fs.writeFileSync('test-results-table.html', tableHtml);
-console.log('✅ Tabla de resultados generada exitosamente');
+
+// Crear tabla en formato Markdown para GitHub Actions Summary
+let markdownTable = `## 📊 Resultados de Ejecución
+
+### Resumen
+- ✅ **Passed:** ${totalPassed}
+- ❌ **Failed:** ${totalFailed}
+- ⏸️ **Pending:** ${totalPending}
+- 📦 **Total:** ${totalPassed + totalFailed + totalPending}
+
+### Detalle de Casos de Prueba
+
+| Caso de Prueba | Estado |
+|----------------|--------|
+`;
+
+// Recrear las filas en formato Markdown
+const scenarioLinksAgain = document.querySelectorAll('a[data-toggle="collapse"]');
+scenarioLinksAgain.forEach(link => {
+  const nameElement = link.querySelector('.ellipsis');
+  const scenarioName = nameElement ? nameElement.getAttribute('data-text') || nameElement.textContent.trim() : 'N/A';
+  
+  const successLabel = link.querySelector('.label-success');
+  const dangerLabel = link.querySelector('.label-danger');
+  const warningLabel = link.querySelector('.label-warning');
+  
+  let status = '';
+  if (dangerLabel) {
+    status = '❌ FAILED';
+  } else if (warningLabel && !successLabel) {
+    status = '⏸️ PENDING';
+  } else if (successLabel) {
+    status = '✅ PASSED';
+  } else {
+    status = '❓ UNKNOWN';
+  }
+  
+  markdownTable += `| ${scenarioName} | ${status} |\n`;
+});
+
+// Guardar la tabla Markdown
+fs.writeFileSync('test-results-summary.md', markdownTable);
+
+console.log('\n✅ Tabla de resultados generada exitosamente');
 console.log(`📊 Total: ${totalPassed + totalFailed + totalPending} escenarios`);
 console.log(`   ✅ Passed: ${totalPassed}`);
 console.log(`   ❌ Failed: ${totalFailed}`);
 console.log(`   ⏸️ Pending: ${totalPending}`);
+
+// Si no se encontraron escenarios, mostrar advertencia
+if (totalPassed + totalFailed + totalPending === 0) {
+  console.log('\n⚠️ ADVERTENCIA: No se encontraron escenarios en el reporte HTML');
+  console.log('   Verifica que target/cucumber-report.html se haya generado correctamente');
+}

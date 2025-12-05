@@ -124,7 +124,7 @@ jobs:
       if: always()
       run: node .github/scripts/extract-test-results.js
       
-    - name: Leer tabla de resultados
+    - name: Leer tabla de resultados para email
       if: always()
       id: test_results
       run: |
@@ -134,6 +134,15 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
         else
           echo "table_html=<p>No se pudo generar la tabla de resultados</p>" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Mostrar tabla en GitHub Actions Summary
+      if: always()
+      run: |
+        if [ -f test-results-summary.md ]; then
+          cat test-results-summary.md >> $GITHUB_STEP_SUMMARY
+        else
+          echo "⚠️ No se pudo generar el resumen de resultados" >> $GITHUB_STEP_SUMMARY
         fi
         
     - name: Deploy to GitHub Pages
